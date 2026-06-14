@@ -9,7 +9,7 @@ Projeto colaborativo para a cadeira de Programação 2D.
 - [BarTzen](https://github.com/BarTzen)
 - [Havoo-Git](https://github.com/Havoo-Git)
 
-## Tecnologia
+##  Tecnologia
 
 - **Engine:** Godot 4.6
 - **Linguagem:** GDScript
