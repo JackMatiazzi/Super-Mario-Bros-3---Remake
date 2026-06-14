@@ -1,0 +1,67 @@
+name: Auto-prefix PR title
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  prefix-title:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Prefix title based on checked type
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || '';
+            const title = context.payload.pull_request.title || '';
+
+            const types = ['feat', 'fix', 'level', 'art', 'audio', 'docs', 'chore'];
+
+            const checked = types.find(type =>
+              body.includes(`[x] \`${type}\``) || body.includes(`[X] \`${type}\``)
+            );
+
+            if (!checked) return;
+
+            const cleanTitle = title.replace(/^(feat|fix|level|art|audio|docs|chore):\s*/i, '').trim();
+            const newTitle = `${checked}: ${cleanTitle}`;
+
+            if (title !== newTitle) {
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                title: newTitle
+              });
+              console.log(`Título atualizado para: ${newTitle}`);
+            }
+
+            const labelColors = {
+              feat: '0075ca',
+              fix: 'd73a4a',
+              level: '0e8a16',
+              art: 'e4e669',
+              audio: 'f9d0c4',
+              docs: 'cfd3d7',
+              chore: 'eeeeee'
+            };
+
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: checked,
+                color: labelColors[checked]
+              });
+            } catch (e) {}
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              labels: [checked]
+            });
+
+            console.log(`Label adicionada: ${checked}`);
