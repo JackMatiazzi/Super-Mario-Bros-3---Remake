@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/blocks/bloco_item.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/blocks/question_block_spritesheet.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AT_cheio_a"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_cheio_b"]
+atlas = ExtResource("2_tex")
+region = Rect2(18, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_cheio_c"]
+atlas = ExtResource("2_tex")
+region = Rect2(36, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_cheio_d"]
+atlas = ExtResource("2_tex")
+region = Rect2(54, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_vazio"]
+atlas = ExtResource("2_tex")
+region = Rect2(72, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SF_bloco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_cheio_a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_cheio_b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_cheio_c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_cheio_d")
+}],
+"loop": true,
+"name": &"cheio",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_vazio")
+}],
+"loop": false,
+"name": &"vazio",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RECT_bloco"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RECT_golpe"]
+size = Vector2(14, 2)
+
+[node name="BlocoItem" type="StaticBody2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RECT_bloco")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SF_bloco")
+animation = &"cheio"
+
+[node name="AreaGolpe" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe"]
+position = Vector2(0, 9)
+shape = SubResource("RECT_golpe")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/cogumelo_1up.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/items/mushroom_sprite.png" id="2_mushroom"]
+
+[sub_resource type="AtlasTexture" id="AT_mushroom_1up"]
+atlas = ExtResource("2_mushroom")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RECT_body"]
+size = Vector2(14, 14)
+
+[node name="Cogumelo1UP" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.2, 0.9, 0.2, 1)
+texture = SubResource("AT_mushroom_1up")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RECT_body")

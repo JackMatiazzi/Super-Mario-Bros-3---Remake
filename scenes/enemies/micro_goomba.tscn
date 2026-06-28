@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/micro_goomba.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/NES - Super Mario Bros. 3 - Enemies & Bosses - Enemies.png" id="2_enemies"]
+
+[sub_resource type="RectangleShape2D" id="RECT_body"]
+size = Vector2(7, 7)
+
+[sub_resource type="RectangleShape2D" id="RECT_interaction"]
+size = Vector2(10, 10)
+
+[sub_resource type="AtlasTexture" id="AT_micro"]
+atlas = ExtResource("2_enemies")
+region = Rect2(1, 1, 16, 16)
+
+[sub_resource type="Shader" id="SH_chroma"]
+code = "shader_type canvas_item;\nvoid fragment(){ vec4 p=texture(TEXTURE,UV); vec3 a=vec3(41.0,88.0,124.0)/255.0; vec3 b=vec3(68.0,145.0,190.0)/255.0; if(distance(p.rgb,a)<0.01||distance(p.rgb,b)<0.01){p.a=0.0;} COLOR=p;}"
+
+[sub_resource type="ShaderMaterial" id="MAT_chroma"]
+shader = SubResource("SH_chroma")
+
+[node name="MicroGoomba" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_script")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RECT_body")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("MAT_chroma")
+texture = SubResource("AT_micro")
+scale = Vector2(0.5, 0.5)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RECT_interaction")

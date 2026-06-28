@@ -1,7 +1,6 @@
-# Super Mario Bros. 3 — Remake
+# Super Mario Bros. 3 - Remake
 
-Remake não oficial de Super Mario Bros. 3 desenvolvido em Godot 4.6.
-Projeto colaborativo para a cadeira de Programação 2D.
+Remake nao oficial de Super Mario Bros. 3 desenvolvido em Godot para a cadeira de Programacao 2D.
 
 ## Colaboradores
 
@@ -11,39 +10,29 @@ Projeto colaborativo para a cadeira de Programação 2D.
 
 ## Tecnologia
 
-- **Engine:** Godot 4.6
-- **Linguagem:** GDScript
-- **Assets:** Sprites originais do NES (Super Mario Bros. 3)
+- Engine: Godot 4.7
+- Linguagem: GDScript
+- Assets: sprites e sons baseados em Super Mario Bros. 3
 
 ## Como rodar
 
-1. Instale o [Godot 4.6](https://godotengine.org/download)
-2. Clone o repositório: `git clone https://github.com/JackMatiazzi/Super-Mario-Bros-3---Remake.git`
-3. Abra o Godot, clique em **Import** e selecione o `project.godot`
-4. Pressione **F5** para rodar
+1. Instale o Godot 4.7.
+2. Clone este repositorio.
+3. Abra o Godot, clique em Import e selecione o arquivo `project.godot`.
+4. Pressione F5 para rodar o projeto.
 
-## Estrutura
+## Controles
 
-```
-assets/       → sprites e tilesets do jogo original
-```
+- Setas: mover o jogador 1
+- Espaco: pular
+- Shift: correr/interagir
+- Enter: confirmar no menu
+- WASD, J e K: controles do jogador 2
 
-## Roadmap
+## Observacao sobre assets
 
-- [ ] Player (movimento, pulo, animação)
-- [ ] Tilemap — World 1-1
-- [ ] Inimigos básicos (Goomba, Koopa)
-- [ ] HUD (vidas, pontos, tempo)
-- [ ] Tela de título
-- [ ] Mapa do mundo 1
+Este projeto e educacional e sem fins comerciais. Super Mario Bros. 3, seus personagens, sprites, sons e marcas pertencem aos seus respectivos donos. O codigo do projeto foi desenvolvido pelos colaboradores para fins academicos.
 
-## Como contribuir
+## Licenca
 
-- **Nunca commite direto na `main`**
-- Crie uma branch para cada tarefa: `feature/nome`, `fix/nome`, `level/nome`
-- Abra um Pull Request e aguarde **1 aprovação** de um colega antes de mergear
-- Veja [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes
-
-## Licença
-
-MIT — veja [LICENSE](LICENSE)
+O codigo proprio do projeto esta sob a licenca MIT. Os assets de terceiros nao fazem parte dessa licenca.

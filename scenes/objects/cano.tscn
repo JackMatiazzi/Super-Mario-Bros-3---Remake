@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cvbp4jo648l7b"]
+
+[ext_resource type="Script" uid="uid://br3yj14t6yxpc" path="res://scripts/objects/cano.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bsn1eh3cny71i" path="res://assets/tilesets/ground_tileset.png" id="2_ground"]
+
+[sub_resource type="RectangleShape2D" id="RECT_corpo"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AT_tampa_esquerda"]
+atlas = ExtResource("2_ground")
+region = Rect2(239, 23, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_tampa_direita"]
+atlas = ExtResource("2_ground")
+region = Rect2(256, 23, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_corpo_esquerda"]
+atlas = ExtResource("2_ground")
+region = Rect2(239, 40, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_corpo_direita"]
+atlas = ExtResource("2_ground")
+region = Rect2(256, 40, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RECT_topo"]
+size = Vector2(32, 16)
+
+[node name="Cano" type="StaticBody2D" unique_id=257760188]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=560947235]
+shape = SubResource("RECT_corpo")
+
+[node name="TampaEsquerda" type="Sprite2D" parent="." unique_id=1676993013]
+position = Vector2(-8, -8)
+texture = SubResource("AT_tampa_esquerda")
+
+[node name="TampaDireita" type="Sprite2D" parent="." unique_id=1449180856]
+position = Vector2(8, -8)
+texture = SubResource("AT_tampa_direita")
+
+[node name="CorpoEsquerda" type="Sprite2D" parent="." unique_id=1708593121]
+position = Vector2(-8, 8)
+texture = SubResource("AT_corpo_esquerda")
+
+[node name="CorpoDireita" type="Sprite2D" parent="." unique_id=489043679]
+position = Vector2(8, 8)
+texture = SubResource("AT_corpo_direita")
+
+[node name="AreaTopo" type="Area2D" parent="." unique_id=1621958229]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTopo" unique_id=2070886357]
+position = Vector2(0, -24)
+shape = SubResource("RECT_topo")

@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/venus_fireball.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CIRCLE_fire"]
+radius = 4.0
+
+[node name="VenusFireball" type="Area2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_script")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(1, 0.35, 0.05, 1)
+polygon = PackedVector2Array(-4, 0, -2, -4, 2, -4, 4, 0, 2, 4, -2, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CIRCLE_fire")

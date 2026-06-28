@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/goomba.tscn" id="1_goomba"]
+
+[node name="ParaGoombaRed" instance=ExtResource("1_goomba")]
+winged = true
+red_winged = true

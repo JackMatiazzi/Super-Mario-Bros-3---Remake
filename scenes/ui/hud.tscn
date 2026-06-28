@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://wvq3m4u6uyqm"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_script"]
+
+[sub_resource type="Theme" id="TH_hud"]
+default_font_size = 18
+
+[sub_resource type="StyleBoxFlat" id="SB_hud_bg"]
+bg_color = Color(0, 0, 0, 0.86)
+
+[sub_resource type="StyleBoxFlat" id="SB_power_bg"]
+bg_color = Color(0.05, 0.05, 0.05, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="SB_power_fill"]
+bg_color = Color(1, 0.78, 0.05, 1)
+
+[node name="Hud" type="CanvasLayer" unique_id=1250318787]
+layer = 20
+script = ExtResource("1_script")
+
+[node name="Root" type="Control" parent="." unique_id=1096160146]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HudBar" type="Panel" parent="Root" unique_id=643725096]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("TH_hud")
+theme_override_styles/panel = SubResource("SB_hud_bg")
+
+[node name="WorldTitle" type="Label" parent="Root/HudBar" unique_id=1985809452]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 120.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "WORLD"
+
+[node name="WorldValue" type="Label" parent="Root/HudBar" unique_id=550901467]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 38.0
+offset_right = 140.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "WORLD 1-1"
+
+[node name="LivesValue" type="Label" parent="Root/HudBar" unique_id=812121124]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 38.0
+offset_right = 230.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "M x 03"
+
+[node name="PowerLabel" type="Label" parent="Root/HudBar" unique_id=487124328]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 10.0
+offset_right = 340.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "P-METER"
+
+[node name="PowerBar" type="ProgressBar" parent="Root/HudBar" unique_id=111430346]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 42.0
+offset_right = 416.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("SB_power_bg")
+theme_override_styles/fill = SubResource("SB_power_fill")
+max_value = 1.0
+show_percentage = false
+
+[node name="CoinsValue" type="Label" parent="Root/HudBar" unique_id=230042550]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 38.0
+offset_right = 556.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "COIN 00"
+
+[node name="ScoreTitle" type="Label" parent="Root/HudBar" unique_id=862290151]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 10.0
+offset_right = 680.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "SCORE"
+
+[node name="ScoreValue" type="Label" parent="Root/HudBar" unique_id=996273228]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 38.0
+offset_right = 700.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "0000000"
+
+[node name="StateTitle" type="Label" parent="Root/HudBar" unique_id=989512742]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 10.0
+offset_right = 850.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "POWER"
+
+[node name="StateValue" type="Label" parent="Root/HudBar" unique_id=525078157]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 38.0
+offset_right = 860.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "SMALL"
+
+[node name="TimeTitle" type="Label" parent="Root/HudBar" unique_id=302862642]
+layout_mode = 0
+offset_left = 914.0
+offset_top = 10.0
+offset_right = 990.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "TIME"
+
+[node name="TimeValue" type="Label" parent="Root/HudBar" unique_id=1341878220]
+layout_mode = 0
+offset_left = 914.0
+offset_top = 38.0
+offset_right = 980.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "300"

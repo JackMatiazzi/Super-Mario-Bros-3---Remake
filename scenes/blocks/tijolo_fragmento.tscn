@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/blocks/tijolo_fragmento.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/ground_tileset.png" id="2_ground"]
+
+[sub_resource type="AtlasTexture" id="AT_fragmento"]
+atlas = ExtResource("2_ground")
+region = Rect2(18, 23, 8, 8)
+
+[node name="TijoloFragmento" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AT_fragmento")

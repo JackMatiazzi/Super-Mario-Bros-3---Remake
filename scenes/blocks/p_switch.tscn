@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/blocks/p_switch.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/ground_tileset.png" id="2_tileset"]
+
+[sub_resource type="AtlasTexture" id="AT_p_normal"]
+atlas = ExtResource("2_tileset")
+region = Rect2(1, 755, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_p_pressionado"]
+atlas = ExtResource("2_tileset")
+region = Rect2(18, 755, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SF_pswitch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_p_normal")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_p_pressionado")
+}],
+"loop": false,
+"name": &"pressionado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RECT_bloco"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RECT_golpe"]
+size = Vector2(14, 2)
+
+[node name="PSwitch" type="StaticBody2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RECT_bloco")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SF_pswitch")
+animation = &"normal"
+
+[node name="AreaGolpe" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe"]
+position = Vector2(0, 9)
+shape = SubResource("RECT_golpe")
