@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://bwr88jbc2f55i"]
+
+[ext_resource type="PackedScene" uid="uid://cb4bbkt85gqis" path="res://scenes/player/mario.tscn" id="1_mario"]
+[ext_resource type="PackedScene" path="res://scenes/items/moeda.tscn" id="2_moeda"]
+[ext_resource type="PackedScene" path="res://scenes/items/cogumelo.tscn" id="3_cogumelo"]
+[ext_resource type="PackedScene" path="res://scenes/items/folha_super.tscn" id="4_folha"]
+[ext_resource type="PackedScene" path="res://scenes/blocks/bloco_tijolo.tscn" id="5_tijolo"]
+[ext_resource type="PackedScene" path="res://scenes/blocks/bloco_item.tscn" id="6_bloco_item"]
+[ext_resource type="PackedScene" uid="uid://ejvnqkp6n1j1" path="res://scenes/enemies/koopa.tscn" id="7_koopa"]
+[ext_resource type="PackedScene" uid="uid://cvbp4jo648l7b" path="res://scenes/objects/cano.tscn" id="8_cano"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/goomba.tscn" id="9_goomba"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/para_goomba_red.tscn" id="10_para_red"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/para_goomba_brown.tscn" id="11_para_brown"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/micro_goomba.tscn" id="12_micro"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/venus_fire_trap.tscn" id="13_venus"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/koopa_red.tscn" id="14_koopa_red"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/koopa_paratroopa.tscn" id="15_paratroopa"]
+
+[sub_resource type="RectangleShape2D" id="RECT_ground"]
+size = Vector2(1800, 48)
+
+[sub_resource type="RectangleShape2D" id="RECT_wall"]
+size = Vector2(16, 240)
+
+[node name="TestPlayerItems" type="Node2D" unique_id=1102977734]
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1239432076]
+position = Vector2(900, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=963153459]
+shape = SubResource("RECT_ground")
+
+[node name="Visual" type="Polygon2D" parent="Ground" unique_id=1650337628]
+color = Color(0.12, 0.58, 0.16, 1)
+polygon = PackedVector2Array(-900, -24, 900, -24, 900, 24, -900, 24)
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=700415208]
+position = Vector2(8, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=1677330835]
+shape = SubResource("RECT_wall")
+
+[node name="Mario" parent="." unique_id=811509849 instance=ExtResource("1_mario")]
+position = Vector2(64, 280)
+
+[node name="LooseItems" type="Node2D" parent="." unique_id=1998156559]
+
+[node name="Moeda1" parent="LooseItems" unique_id=635966212 instance=ExtResource("2_moeda")]
+position = Vector2(120, 270)
+
+[node name="Moeda2" parent="LooseItems" unique_id=818421401 instance=ExtResource("2_moeda")]
+position = Vector2(140, 250)
+
+[node name="Moeda3" parent="LooseItems" unique_id=164414866 instance=ExtResource("2_moeda")]
+position = Vector2(160, 270)
+
+[node name="Cogumelo" parent="LooseItems" unique_id=1636295219 instance=ExtResource("3_cogumelo")]
+position = Vector2(205, 287)
+
+[node name="FolhaSuper" parent="LooseItems" unique_id=1512330937 instance=ExtResource("4_folha")]
+position = Vector2(255, 270)
+
+[node name="Blocks" type="Node2D" parent="." unique_id=479604082]
+
+[node name="Tijolo1" parent="Blocks" unique_id=697820574 instance=ExtResource("5_tijolo")]
+position = Vector2(330, 240)
+
+[node name="Tijolo2" parent="Blocks" unique_id=1033675410 instance=ExtResource("5_tijolo")]
+position = Vector2(346, 240)
+
+[node name="BlocoCogumelo" parent="Blocks" unique_id=1227475357 instance=ExtResource("6_bloco_item")]
+position = Vector2(362, 240)
+item_cena = ExtResource("3_cogumelo")
+
+[node name="Tijolo3" parent="Blocks" unique_id=1843864625 instance=ExtResource("5_tijolo")]
+position = Vector2(378, 240)
+
+[node name="BlocoFolha" parent="Blocks" unique_id=1536544207 instance=ExtResource("6_bloco_item")]
+position = Vector2(394, 240)
+conteudo = 2
+item_cena = ExtResource("4_folha")
+
+[node name="Tijolo4" parent="Blocks" unique_id=448049322 instance=ExtResource("5_tijolo")]
+position = Vector2(410, 240)
+
+[node name="Koopa" parent="." unique_id=748766026 instance=ExtResource("7_koopa")]
+position = Vector2(510, 282)
+
+[node name="Goomba" parent="." unique_id=827073266 instance=ExtResource("9_goomba")]
+position = Vector2(570, 288)
+
+[node name="ParaGoombaRed" parent="." unique_id=717454153 instance=ExtResource("10_para_red")]
+position = Vector2(630, 280)
+
+[node name="ParaGoombaBrown" parent="." unique_id=797089694 instance=ExtResource("11_para_brown")]
+position = Vector2(700, 280)
+
+[node name="MicroGoomba" parent="." unique_id=695765843 instance=ExtResource("12_micro")]
+position = Vector2(770, 288)
+
+[node name="KoopaRed" parent="." unique_id=1589818369 instance=ExtResource("14_koopa_red")]
+position = Vector2(840, 282)
+
+[node name="KoopaParatroopa" parent="." unique_id=176271123 instance=ExtResource("15_paratroopa")]
+position = Vector2(910, 282)
+
+[node name="VenusFireTrap" parent="." unique_id=285685425 instance=ExtResource("13_venus")]
+position = Vector2(1010, 280)
+
+[node name="CanoEntrada" parent="." unique_id=2048208791 instance=ExtResource("8_cano")]
+position = Vector2(1160, 280)
+destino_global = Vector2(1410, 248)
+
+[node name="CanoSaida" parent="." unique_id=963838513 instance=ExtResource("8_cano")]
+position = Vector2(1410, 280)
+destino_global = Vector2(1160, 248)

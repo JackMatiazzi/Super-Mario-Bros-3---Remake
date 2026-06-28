@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/venus_fire_trap.tscn" id="1_venus"]
+
+[node name="PiranhaPlant" instance=ExtResource("1_venus")]
+shoots_fire = false

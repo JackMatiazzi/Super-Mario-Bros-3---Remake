@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/venus_fire_trap.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/NES - Super Mario Bros. 3 - Enemies & Bosses - Enemies.png" id="2_enemies"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/venus_fireball.tscn" id="3_fireball"]
+
+[sub_resource type="RectangleShape2D" id="RECT_plant"]
+size = Vector2(14, 28)
+
+[sub_resource type="Shader" id="SH_chroma"]
+code = "shader_type canvas_item;\nvoid fragment(){ vec4 p=texture(TEXTURE,UV); vec3 a=vec3(41.0,88.0,124.0)/255.0; vec3 b=vec3(68.0,145.0,190.0)/255.0; vec3 c=vec3(156.0,80.0,164.0)/255.0; if(distance(p.rgb,a)<0.01||distance(p.rgb,b)<0.01||distance(p.rgb,c)<0.01){p.a=0.0;} COLOR=p;}"
+
+[sub_resource type="ShaderMaterial" id="MAT_chroma"]
+shader = SubResource("SH_chroma")
+
+[sub_resource type="AtlasTexture" id="AT_plant_a"]
+atlas = ExtResource("2_enemies")
+region = Rect2(35, 200, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_plant_b"]
+atlas = ExtResource("2_enemies")
+region = Rect2(52, 200, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SF_plant"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": SubResource("AT_plant_a")}, {"duration": 1.0, "texture": SubResource("AT_plant_b")}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="VenusFireTrap" type="Area2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_script")
+projectile_scene = ExtResource("3_fireball")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("MAT_chroma")
+sprite_frames = SubResource("SF_plant")
+animation = &"default"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RECT_plant")

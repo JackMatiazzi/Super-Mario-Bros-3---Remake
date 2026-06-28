@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/blocks/bloco_tijolo.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/tilesets/ground_tileset.png" id="2_ground"]
+
+[sub_resource type="RectangleShape2D" id="RECT_bloco"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RECT_golpe"]
+size = Vector2(14, 2)
+
+[sub_resource type="AtlasTexture" id="AT_tijolo"]
+atlas = ExtResource("2_ground")
+region = Rect2(18, 23, 16, 16)
+
+[node name="BlocoTijolo" type="StaticBody2D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RECT_bloco")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AT_tijolo")
+
+[node name="AreaGolpe" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe"]
+position = Vector2(0, 9)
+shape = SubResource("RECT_golpe")

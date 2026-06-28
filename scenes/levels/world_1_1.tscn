@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://dt07u1vap2cwa"]
+
+[ext_resource type="PackedScene" uid="uid://cb4bbkt85gqis" path="res://scenes/player/mario.tscn" id="1_mario"]
+[ext_resource type="PackedScene" path="res://scenes/items/moeda.tscn" id="2_moeda"]
+[ext_resource type="PackedScene" path="res://scenes/items/cogumelo.tscn" id="3_cogumelo"]
+[ext_resource type="PackedScene" path="res://scenes/items/folha_super.tscn" id="4_folha"]
+[ext_resource type="PackedScene" path="res://scenes/blocks/bloco_item.tscn" id="5_bloco_item"]
+[ext_resource type="PackedScene" path="res://scenes/blocks/bloco_tijolo.tscn" id="6_bloco_tijolo"]
+[ext_resource type="PackedScene" uid="uid://cvbp4jo648l7b" path="res://scenes/objects/cano.tscn" id="7_cano"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/goomba.tscn" id="8_goomba"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/para_goomba_red.tscn" id="9_para_goomba_red"]
+[ext_resource type="PackedScene" uid="uid://ejvnqkp6n1j1" path="res://scenes/enemies/koopa.tscn" id="12_koopa"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/koopa_red.tscn" id="13_koopa_red"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/piranha_plant.tscn" id="15_piranha"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/venus_fire_trap.tscn" id="16_venus"]
+[ext_resource type="Script" uid="uid://ph74rpc5d5n2" path="res://scripts/tests/test_world_players.gd" id="18_players"]
+[ext_resource type="PackedScene" path="res://scenes/player/luigi.tscn" id="19_luigi"]
+
+[sub_resource type="RectangleShape2D" id="RECT_ground"]
+size = Vector2(2600, 32)
+
+[sub_resource type="RectangleShape2D" id="RECT_wall"]
+size = Vector2(16, 144)
+
+[sub_resource type="RectangleShape2D" id="RECT_platform"]
+size = Vector2(224, 16)
+
+[node name="TestWorld1_1EnemiesItems" type="Node2D" unique_id=1792361647]
+script = ExtResource("18_players")
+luigi_scene = ExtResource("19_luigi")
+
+[node name="Background" type="Polygon2D" parent="." unique_id=2059869068]
+z_index = -20
+color = Color(0.686275, 0.976471, 0.941176, 1)
+polygon = PackedVector2Array(-64, -64, 2700, -64, 2700, 380, -64, 380)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=347882612]
+position = Vector2(1300, 336)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=505451392]
+shape = SubResource("RECT_ground")
+
+[node name="Visual" type="Polygon2D" parent="Ground" unique_id=1198420029]
+color = Color(0.1, 0.52, 0.16, 1)
+polygon = PackedVector2Array(-1300, -16, 1300, -16, 1300, 16, -1300, 16)
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1306211015]
+position = Vector2(8, 248)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=1785143378]
+shape = SubResource("RECT_wall")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1722694129]
+position = Vector2(2592, 248)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1747783021]
+shape = SubResource("RECT_wall")
+
+[node name="Mario" parent="." unique_id=209112404 instance=ExtResource("1_mario")]
+position = Vector2(64, 304)
+
+[node name="Camera2D2" type="Camera2D" parent="Mario" unique_id=1883361732]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 2600
+limit_bottom = 380
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="ItemBlocks" type="Node2D" parent="." unique_id=2069613644]
+
+[node name="BlocoCogumelo" parent="ItemBlocks" unique_id=138452683 instance=ExtResource("5_bloco_item")]
+position = Vector2(176, 256)
+
+[node name="BlocoFolha" parent="ItemBlocks" unique_id=335060796 instance=ExtResource("5_bloco_item")]
+position = Vector2(208, 256)
+conteudo = 2
+
+[node name="BlocoVazio" parent="ItemBlocks" unique_id=745876265 instance=ExtResource("5_bloco_item")]
+position = Vector2(240, 256)
+conteudo = 0
+
+[node name="BlocoTijoloA" parent="ItemBlocks" unique_id=1985162877 instance=ExtResource("6_bloco_tijolo")]
+position = Vector2(288, 256)
+
+[node name="BlocoTijoloB" parent="ItemBlocks" unique_id=81470968 instance=ExtResource("6_bloco_tijolo")]
+position = Vector2(304, 256)
+
+[node name="ChaoBlocoCogumeloA" parent="ItemBlocks" unique_id=484499820 instance=ExtResource("5_bloco_item")]
+position = Vector2(352, 288)
+
+[node name="ChaoBlocoCogumeloB" parent="ItemBlocks" unique_id=1605839908 instance=ExtResource("5_bloco_item")]
+position = Vector2(384, 288)
+
+[node name="ChaoBlocoFolha" parent="ItemBlocks" unique_id=591117884 instance=ExtResource("5_bloco_item")]
+position = Vector2(416, 288)
+conteudo = 2
+
+[node name="ChaoBlocoVazio" parent="ItemBlocks" unique_id=20558979 instance=ExtResource("5_bloco_item")]
+position = Vector2(448, 288)
+conteudo = 0
+
+[node name="ChaoTijoloA" parent="ItemBlocks" unique_id=493049519 instance=ExtResource("6_bloco_tijolo")]
+position = Vector2(488, 288)
+
+[node name="ChaoTijoloB" parent="ItemBlocks" unique_id=1470192770 instance=ExtResource("6_bloco_tijolo")]
+position = Vector2(504, 288)
+
+[node name="LooseItems" type="Node2D" parent="." unique_id=1336715924]
+
+[node name="MoedaA" parent="LooseItems" unique_id=907887452 instance=ExtResource("2_moeda")]
+position = Vector2(392, 288)
+
+[node name="MoedaB" parent="LooseItems" unique_id=300025053 instance=ExtResource("2_moeda")]
+position = Vector2(416, 272)
+
+[node name="MoedaC" parent="LooseItems" unique_id=1521582230 instance=ExtResource("2_moeda")]
+position = Vector2(440, 288)
+
+[node name="Cogumelo" parent="LooseItems" unique_id=2019815495 instance=ExtResource("3_cogumelo")]
+position = Vector2(541, 305)
+
+[node name="FolhaSuper" parent="LooseItems" unique_id=1833919880 instance=ExtResource("4_folha")]
+position = Vector2(552, 288)
+
+[node name="PipeTests" type="Node2D" parent="." unique_id=1918946414]
+
+[node name="CanoEntrada" parent="PipeTests" unique_id=1443009971 instance=ExtResource("7_cano")]
+position = Vector2(656, 304)
+permite_entrada = true
+destino_global = Vector2(736, 272)
+
+[node name="CanoSaida" parent="PipeTests" unique_id=1634309490 instance=ExtResource("7_cano")]
+position = Vector2(736, 304)
+permite_saida = true
+destino_global = Vector2(656, 272)
+
+[node name="CanoPiranha" parent="PipeTests" unique_id=975489611 instance=ExtResource("7_cano")]
+position = Vector2(1576, 304)
+
+[node name="CanoVenus" parent="PipeTests" unique_id=841733048 instance=ExtResource("7_cano")]
+position = Vector2(1712, 304)
+
+[node name="CanoGoombaSpawner" parent="PipeTests" unique_id=1000583221 instance=ExtResource("7_cano")]
+position = Vector2(1992, 304)
+spawn_habilitado = true
+spawn_scene = ExtResource("8_goomba")
+spawn_interval = 3.0
+max_spawn_vivos = 2
+
+[node name="CanoCogumeloSpawner" parent="PipeTests" unique_id=1779924554 instance=ExtResource("7_cano")]
+position = Vector2(2104, 304)
+spawn_habilitado = true
+spawn_scene = ExtResource("3_cogumelo")
+spawn_interval = 5.0
+max_spawn_vivos = 1
+
+[node name="Enemies" type="Node2D" parent="." unique_id=22352645]
+
+[node name="Goomba" parent="Enemies" unique_id=953585089 instance=ExtResource("8_goomba")]
+position = Vector2(864, 306)
+
+[node name="ParaGoombaRed" parent="Enemies" unique_id=166719726 instance=ExtResource("9_para_goomba_red")]
+position = Vector2(944, 288)
+
+[node name="Koopa" parent="Enemies" unique_id=331168820 instance=ExtResource("12_koopa")]
+position = Vector2(1216, 292)
+
+[node name="KoopaRed" parent="Enemies" unique_id=384915 instance=ExtResource("13_koopa_red")]
+position = Vector2(1312, 292)
+
+[node name="PiranhaPlant" parent="Enemies" unique_id=1636057973 instance=ExtResource("15_piranha")]
+position = Vector2(1576, 276)
+
+[node name="VenusFireTrap" parent="Enemies" unique_id=1105036394 instance=ExtResource("16_venus")]
+position = Vector2(1712, 276)
+
+[node name="PlantPlatform" type="StaticBody2D" parent="." unique_id=1864683274]
+position = Vector2(1640, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlantPlatform" unique_id=562980761]
+shape = SubResource("RECT_platform")
+
+[node name="Visual" type="Polygon2D" parent="PlantPlatform" unique_id=1958792935]
+color = Color(0.1, 0.52, 0.16, 1)
+polygon = PackedVector2Array(-112, -8, 112, -8, 112, 8, -112, 8)
+
+[node name="GeneratorPlatform" type="StaticBody2D" parent="." unique_id=2073750135]
+position = Vector2(1992, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GeneratorPlatform" unique_id=279872628]
+shape = SubResource("RECT_platform")
+
+[node name="Visual" type="Polygon2D" parent="GeneratorPlatform" unique_id=592839622]
+color = Color(0.1, 0.52, 0.16, 1)
+polygon = PackedVector2Array(-112, -8, 112, -8, 112, 8, -112, 8)
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=2000760139]
+position = Vector2(1300, 392)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=291089268]
+shape = SubResource("RECT_ground")

@@ -1,0 +1,290 @@
+[gd_scene load_steps=26 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/mario.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/mario/sm3_mario_luigi_spritesheet.png" id="2_sprites"]
+
+[sub_resource type="RectangleShape2D" id="RECT_pequeno"]
+size = Vector2(12, 16)
+
+[sub_resource type="RectangleShape2D" id="RECT_adulto"]
+size = Vector2(16, 27)
+
+[sub_resource type="Shader" id="SH_chroma"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	vec4 pixel = texture(TEXTURE, UV);
+	vec3 dark_blue = vec3(41.0, 88.0, 124.0) / 255.0;
+	vec3 light_blue = vec3(68.0, 145.0, 190.0) / 255.0;
+	if (distance(pixel.rgb, dark_blue) < 0.01 || distance(pixel.rgb, light_blue) < 0.01) {
+		pixel.a = 0.0;
+	}
+	COLOR = pixel;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="MAT_chroma"]
+shader = SubResource("SH_chroma")
+
+[sub_resource type="AtlasTexture" id="AT_pq_idle"]
+atlas = ExtResource("2_sprites")
+region = Rect2(0, 53, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_pq_walk_a"]
+atlas = ExtResource("2_sprites")
+region = Rect2(36, 53, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_pq_jump"]
+atlas = ExtResource("2_sprites")
+region = Rect2(72, 53, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_pq_die"]
+atlas = ExtResource("2_sprites")
+region = Rect2(307, 49, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AT_ad_idle"]
+atlas = ExtResource("2_sprites")
+region = Rect2(1, 176, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_ad_walk_a"]
+atlas = ExtResource("2_sprites")
+region = Rect2(19, 176, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_ad_walk_b"]
+atlas = ExtResource("2_sprites")
+region = Rect2(37, 176, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_ad_jump"]
+atlas = ExtResource("2_sprites")
+region = Rect2(73, 176, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_ad_crouch"]
+atlas = ExtResource("2_sprites")
+region = Rect2(54, 176, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_idle"]
+atlas = ExtResource("2_sprites")
+region = Rect2(1, 426, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_walk_a"]
+atlas = ExtResource("2_sprites")
+region = Rect2(19, 426, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_walk_b"]
+atlas = ExtResource("2_sprites")
+region = Rect2(37, 426, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_jump"]
+atlas = ExtResource("2_sprites")
+region = Rect2(73, 426, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_crouch"]
+atlas = ExtResource("2_sprites")
+region = Rect2(54, 466, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_fly_a"]
+atlas = ExtResource("2_sprites")
+region = Rect2(1, 466, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_fly_b"]
+atlas = ExtResource("2_sprites")
+region = Rect2(19, 466, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_tail_a"]
+atlas = ExtResource("2_sprites")
+region = Rect2(245, 466, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AT_rc_tail_b"]
+atlas = ExtResource("2_sprites")
+region = Rect2(271, 466, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SF_luigi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_ad_crouch")
+}],
+"loop": true,
+"name": &"adulto_crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_ad_idle")
+}],
+"loop": true,
+"name": &"adulto_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_ad_jump")
+}],
+"loop": false,
+"name": &"adulto_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_ad_idle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_ad_walk_a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_ad_walk_b")
+}],
+"loop": true,
+"name": &"adulto_walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_pq_idle")
+}],
+"loop": true,
+"name": &"pequeno_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_pq_die")
+}],
+"loop": false,
+"name": &"pequeno_die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_pq_jump")
+}],
+"loop": false,
+"name": &"pequeno_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_pq_idle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_pq_walk_a")
+}],
+"loop": true,
+"name": &"pequeno_walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_rc_crouch")
+}],
+"loop": true,
+"name": &"raccoon_crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_rc_fly_a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_rc_fly_b")
+}],
+"loop": true,
+"name": &"raccoon_fly",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_rc_idle")
+}],
+"loop": true,
+"name": &"raccoon_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_rc_jump")
+}],
+"loop": false,
+"name": &"raccoon_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_rc_tail_a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_rc_tail_b")
+}],
+"loop": false,
+"name": &"raccoon_tail",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_rc_idle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_rc_walk_a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_rc_walk_b")
+}],
+"loop": true,
+"name": &"raccoon_walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RECT_tail"]
+size = Vector2(12, 20)
+
+[sub_resource type="RectangleShape2D" id="RECT_pickup"]
+size = Vector2(22, 40)
+
+[node name="Luigi" type="CharacterBody2D"]
+collision_layer = 1
+collision_mask = 1
+script = ExtResource("1_script")
+character_name = "Luigi"
+player_group = "player_2"
+left_action = "p2_left"
+right_action = "p2_right"
+up_action = "p2_up"
+down_action = "p2_down"
+jump_action = "p2_jump"
+run_action = "p2_run"
+camera_enabled = false
+
+[node name="CollisionShapePequeno" type="CollisionShape2D" parent="."]
+shape = SubResource("RECT_pequeno")
+
+[node name="CollisionShapeAdulto" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RECT_adulto")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("MAT_chroma")
+sprite_frames = SubResource("SF_luigi")
+animation = &"pequeno_idle"
+
+[node name="TailHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailHitbox"]
+shape = SubResource("RECT_tail")
+
+[node name="AreaPickup" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPickup"]
+position = Vector2(0, -10)
+shape = SubResource("RECT_pickup")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+enabled = false
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

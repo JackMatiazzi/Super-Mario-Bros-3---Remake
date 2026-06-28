@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://1oxwkuhs1n7b"]
+
+[ext_resource type="Script" uid="uid://dbkcesvm110yx" path="res://scripts/ui/title_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cay26wt6dv0up" path="res://assets/NES - Super Mario Bros. 3 - Other Backgrounds - Title Screen.png" id="2_title"]
+
+[sub_resource type="Theme" id="TH_title"]
+default_font_size = 28
+
+[sub_resource type="AtlasTexture" id="AT_title_combined"]
+atlas = ExtResource("2_title")
+region = Rect2(783, 241, 256, 224)
+
+[node name="TitleMenu" type="Control" unique_id=1317213914]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("TH_title")
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1068399147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Screen" type="Control" parent="." unique_id=1539479071]
+custom_minimum_size = Vector2(768, 672)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -336.0
+offset_right = 384.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleImage" type="TextureRect" parent="Screen" unique_id=1947639586]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AT_title_combined")
+expand_mode = 1
+
+[node name="Selector" type="Node2D" parent="Screen" unique_id=1116910176]
+position = Vector2(215, 461)
+
+[node name="Outline" type="Polygon2D" parent="Screen/Selector" unique_id=1548757252]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-3, -4, 29, 14, -3, 32)
+
+[node name="Fill" type="Polygon2D" parent="Screen/Selector" unique_id=1630812854]
+color = Color(0.933333, 0.521569, 0, 1)
+polygon = PackedVector2Array(0, 0, 22, 14, 0, 28)

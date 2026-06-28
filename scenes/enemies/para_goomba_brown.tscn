@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/goomba.tscn" id="1_goomba"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/micro_goomba.tscn" id="2_micro"]
+
+[node name="ParaGoombaBrown" instance=ExtResource("1_goomba")]
+winged = true
+spawns_micro = true
+micro_scene = ExtResource("2_micro")
