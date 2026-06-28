@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://dqk36o0x5pr7v"]
+
+[ext_resource type="Shader" uid="uid://dshj8mhd7n0pg" path="res://remover_fundo.gdshader" id="1_ljfyx"]
+[ext_resource type="Script" uid="uid://d4c885nr03q67" path="res://carta.gd" id="1_xu3ok"]
+[ext_resource type="Texture2D" uid="uid://dxxqvmkp4us5n" path="res://assets/NES - Super Mario Bros. 3 - Tilesets - Map Tileset.png" id="2_uly2h"]
+[ext_resource type="Texture2D" uid="uid://bf88r7hdr7vld" path="res://assets/NES - Super Mario Bros. 3 - Tilesets - Miscellaneous Screen Tiles.png" id="3_cl16x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ope3v"]
+shader = ExtResource("1_ljfyx")
+shader_parameter/cor_para_remover = Color(0, 1, 0, 0)
+shader_parameter/tolerancia_remover = 0.1
+shader_parameter/cor_para_alterar = Color(0.8784314, 0.6392157, 0.84705883, 1)
+shader_parameter/nova_cor = Color(0, 0, 0, 1)
+shader_parameter/tolerancia_alterar = 0.1
+shader_parameter/suavidade = 0.05
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bffwc"]
+texture = ExtResource("2_uly2h")
+margins = Vector2i(8, 1)
+separation = Vector2i(2, 2)
+1:6/0 = 0
+1:6/0/terrain_set = 0
+1:6/0/terrains_peering_bit/bottom_right_corner = 0
+3:6/0 = 0
+3:6/0/terrain_set = 0
+3:6/0/terrains_peering_bit/bottom_left_corner = 0
+3:8/0 = 0
+3:8/0/terrain_set = 0
+3:8/0/terrains_peering_bit/top_left_corner = 0
+1:8/0 = 0
+1:8/0/terrain_set = 0
+1:8/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uu4c1"]
+texture = ExtResource("3_cl16x")
+margins = Vector2i(6, 9)
+separation = Vector2i(0, 2)
+texture_region_size = Vector2i(8, 8)
+115:58/0 = 0
+115:58/0/terrain_set = 0
+115:58/0/terrains_peering_bit/right_side = 0
+115:58/0/terrains_peering_bit/bottom_side = 0
+116:58/0 = 0
+116:58/0/terrain_set = 0
+116:58/0/terrains_peering_bit/bottom_side = 0
+116:58/0/terrains_peering_bit/left_side = 0
+115:59/0 = 0
+115:59/0/terrain_set = 0
+115:59/0/terrains_peering_bit/right_side = 0
+116:59/0 = 0
+116:59/0/terrain_set = 0
+
+[sub_resource type="TileSet" id="TileSet_sl4aw"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_bffwc")
+sources/1 = SubResource("TileSetAtlasSource_uu4c1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljfyx"]
+texture = ExtResource("3_cl16x")
+margins = Vector2i(6, 9)
+separation = Vector2i(0, 2)
+texture_region_size = Vector2i(8, 8)
+115:58/0 = 0
+115:58/0/terrain_set = 0
+115:58/0/terrains_peering_bit/bottom_right_corner = 0
+116:58/0 = 0
+116:58/0/terrain_set = 0
+116:58/0/terrains_peering_bit/bottom_left_corner = 0
+115:59/0 = 0
+115:59/0/terrain_set = 0
+115:59/0/terrains_peering_bit/top_right_corner = 0
+116:59/0 = 0
+116:59/0/terrain_set = 0
+116:59/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_uly2h"]
+tile_size = Vector2i(8, 8)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_ljfyx")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uly2h"]
+texture = ExtResource("3_cl16x")
+margins = Vector2i(10, 9)
+separation = Vector2i(0, 2)
+texture_region_size = Vector2i(8, 8)
+119:58/0 = 0
+119:58/0/terrain_set = 0
+119:58/0/terrains_peering_bit/bottom_right_corner = 0
+119:59/0 = 0
+119:59/0/terrain_set = 0
+119:59/0/terrains_peering_bit/top_right_corner = 0
+120:59/0 = 0
+120:59/0/terrain_set = 0
+120:59/0/terrains_peering_bit/top_left_corner = 0
+120:58/0 = 0
+120:58/0/terrain_set = 0
+120:58/0/terrains_peering_bit/bottom_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_cl16x"]
+tile_size = Vector2i(8, 8)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_uly2h")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ope3v"]
+texture = ExtResource("3_cl16x")
+margins = Vector2i(8, 9)
+separation = Vector2i(0, 2)
+texture_region_size = Vector2i(8, 8)
+117:58/0 = 0
+117:58/0/terrain_set = 0
+117:58/0/terrains_peering_bit/bottom_right_corner = 0
+118:58/0 = 0
+118:58/0/terrain_set = 0
+118:58/0/terrains_peering_bit/bottom_left_corner = 0
+117:59/0 = 0
+117:59/0/terrain_set = 0
+117:59/0/terrains_peering_bit/top_right_corner = 0
+118:59/0 = 0
+118:59/0/terrain_set = 0
+118:59/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_bffwc"]
+tile_size = Vector2i(8, 8)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_ope3v")
+
+[node name="Carta" type="Node2D" unique_id=1659976613]
+script = ExtResource("1_xu3ok")
+
+[node name="Base" type="TileMapLayer" parent="." unique_id=1445658472]
+material = SubResource("ShaderMaterial_ope3v")
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 8, 0, 0, 0, 0, 0, 255, 255, 0, 0, 3, 0, 6, 0, 0, 0, 255, 255, 0, 0, 0, 0, 1, 0, 8, 0, 0, 0, 255, 255, 255, 255, 0, 0, 1, 0, 6, 0, 0, 0)
+tile_set = SubResource("TileSet_sl4aw")
+
+[node name="Cogumelo" type="TileMapLayer" parent="." unique_id=1581627556]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 116, 0, 59, 0, 0, 0, 0, 0, 255, 255, 0, 0, 116, 0, 58, 0, 0, 0, 255, 255, 0, 0, 0, 0, 115, 0, 59, 0, 0, 0, 255, 255, 255, 255, 0, 0, 115, 0, 58, 0, 0, 0)
+tile_set = SubResource("TileSet_uly2h")
+
+[node name="Estrela" type="TileMapLayer" parent="." unique_id=1135551396]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 120, 0, 59, 0, 0, 0, 0, 0, 255, 255, 0, 0, 120, 0, 58, 0, 0, 0, 255, 255, 0, 0, 0, 0, 119, 0, 59, 0, 0, 0, 255, 255, 255, 255, 0, 0, 119, 0, 58, 0, 0, 0)
+tile_set = SubResource("TileSet_cl16x")
+
+[node name="Flor" type="TileMapLayer" parent="." unique_id=1817018216]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 118, 0, 59, 0, 0, 0, 0, 0, 255, 255, 0, 0, 118, 0, 58, 0, 0, 0, 255, 255, 0, 0, 0, 0, 117, 0, 59, 0, 0, 0, 255, 255, 255, 255, 0, 0, 117, 0, 58, 0, 0, 0)
+tile_set = SubResource("TileSet_bffwc")
