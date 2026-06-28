@@ -1,0 +1,374 @@
+[gd_scene format=4 uid="uid://bv4b1nr6c051h"]
+
+[ext_resource type="Script" uid="uid://bv3skx2olpivv" path="res://info.gd" id="1_dnune"]
+[ext_resource type="Shader" uid="uid://dshj8mhd7n0pg" path="res://remover_fundo.gdshader" id="1_tk7c1"]
+[ext_resource type="Texture2D" uid="uid://dxxqvmkp4us5n" path="res://assets/NES - Super Mario Bros. 3 - Tilesets - Map Tileset.png" id="2_y06mq"]
+[ext_resource type="FontFile" uid="uid://djmw4vu0thvth" path="res://assets/Super-Mario-Bros--3.ttf" id="3_y06mq"]
+[ext_resource type="Texture2D" uid="uid://bf88r7hdr7vld" path="res://assets/NES - Super Mario Bros. 3 - Tilesets - Miscellaneous Screen Tiles.png" id="4_ohlig"]
+[ext_resource type="Script" uid="uid://duyc8u3wlcyxy" path="res://medidor.gd" id="5_apbm5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohlig"]
+shader = ExtResource("1_tk7c1")
+shader_parameter/cor_para_remover = Color(0, 1, 0, 0)
+shader_parameter/tolerancia_remover = 0.1
+shader_parameter/cor_para_alterar = Color(0.8862745, 0.6627451, 0.85882354, 1)
+shader_parameter/nova_cor = Color(0, 0, 0, 1)
+shader_parameter/tolerancia_alterar = 0.1
+shader_parameter/suavidade = 0.05
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_apbm5"]
+texture = ExtResource("2_y06mq")
+margins = Vector2i(8, 1)
+separation = Vector2i(2, 2)
+1:6/0 = 0
+1:6/0/terrain_set = 0
+1:6/0/terrains_peering_bit/bottom_right_corner = 0
+2:6/0 = 0
+2:6/0/terrain_set = 0
+2:6/0/terrains_peering_bit/bottom_right_corner = 0
+2:6/0/terrains_peering_bit/bottom_left_corner = 0
+3:6/0 = 0
+3:6/0/terrain_set = 0
+3:6/0/terrains_peering_bit/bottom_left_corner = 0
+1:8/0 = 0
+1:8/0/terrain_set = 0
+1:8/0/terrains_peering_bit/top_right_corner = 0
+2:8/0 = 0
+2:8/0/terrain_set = 0
+2:8/0/terrains_peering_bit/top_left_corner = 0
+2:8/0/terrains_peering_bit/top_right_corner = 0
+3:8/0 = 0
+3:8/0/terrain_set = 0
+3:8/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_dnune"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_apbm5")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qjc5n"]
+font = ExtResource("3_y06mq")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3rpuc"]
+font = ExtResource("3_y06mq")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vi5j5"]
+font = ExtResource("3_y06mq")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lvtn7"]
+font = ExtResource("3_y06mq")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rpuc"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 481, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi5j5"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(962, 481, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbcuc"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 517, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvtn7"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 535, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj8n5"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 481, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjlvh"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 481, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suymd"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 481, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7hkf"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 481, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmcgq"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 481, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wropp"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 481, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnju6"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 517, 16, 8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tk7c1"]
+shader = ExtResource("1_tk7c1")
+shader_parameter/cor_para_remover = Color(0, 1, 0, 0)
+shader_parameter/tolerancia_remover = 0.1
+shader_parameter/cor_para_alterar = Color(0.8980392, 0.61960787, 0.7490196, 1)
+shader_parameter/nova_cor = Color(0, 0, 0, 1)
+shader_parameter/tolerancia_alterar = 0.1
+shader_parameter/suavidade = 0.05
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y06mq"]
+texture = ExtResource("2_y06mq")
+margins = Vector2i(14, 1)
+separation = Vector2i(2, 2)
+4:6/0 = 0
+4:6/0/terrain_set = 0
+4:6/0/terrains_peering_bit/bottom_right_corner = 0
+5:6/0 = 0
+5:6/0/terrain_set = 0
+5:6/0/terrains_peering_bit/bottom_right_corner = 0
+5:6/0/terrains_peering_bit/bottom_left_corner = 0
+6:6/0 = 0
+6:6/0/terrain_set = 0
+6:6/0/terrains_peering_bit/bottom_left_corner = 0
+4:8/0 = 0
+4:8/0/terrain_set = 0
+4:8/0/terrains_peering_bit/top_right_corner = 0
+5:8/0 = 0
+5:8/0/terrain_set = 0
+5:8/0/terrains_peering_bit/top_left_corner = 0
+5:8/0/terrains_peering_bit/top_right_corner = 0
+6:8/0 = 0
+6:8/0/terrain_set = 0
+6:8/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_ohlig"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_y06mq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ohlig"]
+font = ExtResource("3_y06mq")
+font_size = 6
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y06mq"]
+font = ExtResource("3_y06mq")
+font_size = 10
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_apbm5"]
+font = ExtResource("3_y06mq")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apbm5"]
+shader = ExtResource("1_tk7c1")
+shader_parameter/cor_para_remover = Color(0, 1, 0, 1)
+shader_parameter/tolerancia_remover = 0.1
+shader_parameter/cor_para_alterar = Color(1, 0, 0, 1)
+shader_parameter/nova_cor = Color(0, 0, 0, 1)
+shader_parameter/tolerancia_alterar = 0.1
+shader_parameter/suavidade = 0.05
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnune"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(962, 455, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohlig"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(1142, 455, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjc5n"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(944, 455, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apbm5"]
+atlas = ExtResource("4_ohlig")
+region = Rect2(1184, 455, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3rpuc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnune")
+}],
+"loop": true,
+"name": &"luigi",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohlig")
+}],
+"loop": true,
+"name": &"luigi_item",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjc5n")
+}],
+"loop": true,
+"name": &"mario",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apbm5")
+}],
+"loop": true,
+"name": &"mario_item",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnune"]
+font = ExtResource("3_y06mq")
+font_size = 10
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Info" type="Node2D" unique_id=1528858668]
+script = ExtResource("1_dnune")
+
+[node name="Jogador" type="TileMapLayer" parent="." unique_id=1561939230]
+material = SubResource("ShaderMaterial_ohlig")
+tile_map_data = PackedByteArray("AAAEAAAAAAADAAgAAAAEAP//AAADAAYAAAADAAAAAAACAAgAAAADAP//AAACAAYAAAACAAAAAAACAAgAAAACAP//AAACAAYAAAABAAAAAAACAAgAAAABAP//AAACAAYAAAAAAAAAAAACAAgAAAAAAP//AAACAAYAAAD//wAAAAACAAgAAAD/////AAACAAYAAAD+/wAAAAACAAgAAAD+////AAACAAYAAAD9/wAAAAACAAgAAAD9////AAACAAYAAAD8/wAAAAACAAgAAAD8////AAACAAYAAAD7/wAAAAABAAgAAAD7////AAABAAYAAAA=")
+tile_set = SubResource("TileSet_dnune")
+
+[node name="Pontos" type="Label" parent="Jogador" unique_id=1347507636]
+offset_left = -21.0
+offset_right = 32.0
+offset_bottom = 9.0
+text = "0000000"
+label_settings = SubResource("LabelSettings_qjc5n")
+
+[node name="TempoIcon" type="Sprite2D" parent="Jogador" unique_id=769579446]
+position = Vector2(44, 5)
+texture = ExtResource("4_ohlig")
+region_enabled = true
+region_rect = Rect2(926, 527, 8, 8)
+
+[node name="Tempo" type="Label" parent="Jogador/TempoIcon" unique_id=793165185]
+offset_left = 5.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 4.0
+text = "000"
+label_settings = SubResource("LabelSettings_3rpuc")
+
+[node name="MoedasIcon" type="Label" parent="Jogador" unique_id=963878840]
+offset_left = 48.0
+offset_top = -8.0
+offset_right = 57.0
+offset_bottom = 1.0
+text = "$"
+label_settings = SubResource("LabelSettings_vi5j5")
+
+[node name="Moedas" type="Label" parent="Jogador/MoedasIcon" unique_id=1108347250]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 24.0
+offset_bottom = 10.0
+text = "0"
+label_settings = SubResource("LabelSettings_lvtn7")
+horizontal_alignment = 2
+
+[node name="Medidor" type="HBoxContainer" parent="Jogador" unique_id=966544068]
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 40.0
+theme_override_constants/separation = 0
+script = ExtResource("5_apbm5")
+textura_seta_vazia = SubResource("AtlasTexture_3rpuc")
+textura_seta_cheia = SubResource("AtlasTexture_vi5j5")
+textura_p_vazio = SubResource("AtlasTexture_hbcuc")
+textura_p_cheio = SubResource("AtlasTexture_lvtn7")
+
+[node name="Seta" type="TextureRect" parent="Jogador/Medidor" unique_id=1424508265]
+layout_mode = 2
+texture = SubResource("AtlasTexture_sj8n5")
+
+[node name="Seta2" type="TextureRect" parent="Jogador/Medidor" unique_id=43032618]
+layout_mode = 2
+texture = SubResource("AtlasTexture_fjlvh")
+
+[node name="Seta3" type="TextureRect" parent="Jogador/Medidor" unique_id=1629384988]
+layout_mode = 2
+texture = SubResource("AtlasTexture_suymd")
+
+[node name="Seta4" type="TextureRect" parent="Jogador/Medidor" unique_id=308483484]
+layout_mode = 2
+texture = SubResource("AtlasTexture_f7hkf")
+
+[node name="Seta5" type="TextureRect" parent="Jogador/Medidor" unique_id=34043169]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wmcgq")
+
+[node name="Seta6" type="TextureRect" parent="Jogador/Medidor" unique_id=2138863589]
+layout_mode = 2
+texture = SubResource("AtlasTexture_wropp")
+
+[node name="IconP" type="TextureRect" parent="Jogador/Medidor" unique_id=69518185]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mnju6")
+
+[node name="Itens" type="TileMapLayer" parent="." unique_id=158178858]
+visible = false
+material = SubResource("ShaderMaterial_tk7c1")
+tile_map_data = PackedByteArray("AAAJAAAAAAAGAAgAAAAJAP//AAAGAAYAAAAIAAAAAAAFAAgAAAAIAP//AAAFAAYAAAAHAAAAAAAFAAgAAAAHAP//AAAFAAYAAAAGAAAAAAAFAAgAAAAGAP//AAAFAAYAAAAFAAAAAAAFAAgAAAAFAP//AAAFAAYAAAAEAAAAAAAFAAgAAAAEAP//AAAFAAYAAAADAAAAAAAFAAgAAAADAP//AAAFAAYAAAACAAAAAAAFAAgAAAACAP//AAAFAAYAAAABAAAAAAAFAAgAAAABAP//AAAFAAYAAAAAAAAAAAAFAAgAAAAAAP//AAAFAAYAAAD//wAAAAAFAAgAAAD/////AAAFAAYAAAD+/wAAAAAFAAgAAAD+////AAAFAAYAAAD9/wAAAAAFAAgAAAD9////AAAFAAYAAAD8/wAAAAAFAAgAAAD8////AAAFAAYAAAD7/wAAAAAEAAgAAAD7////AAAEAAYAAAA=")
+tile_set = SubResource("TileSet_ohlig")
+
+[node name="Control" type="Control" parent="." unique_id=273917320]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Mundo" type="Label" parent="Control" unique_id=2072934371]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -7.0
+offset_right = -42.0
+text = "mundo"
+label_settings = SubResource("LabelSettings_ohlig")
+
+[node name="1" type="Label" parent="Control/Mundo" unique_id=513993132]
+layout_mode = 0
+offset_left = 31.0
+offset_top = -4.0
+offset_right = 38.0
+offset_bottom = 8.0
+text = "1"
+label_settings = SubResource("LabelSettings_y06mq")
+
+[node name="X" type="Label" parent="Control" unique_id=290407732]
+layout_mode = 0
+offset_left = -54.0
+offset_right = -47.0
+offset_bottom = 9.0
+text = "×"
+label_settings = SubResource("LabelSettings_apbm5")
+
+[node name="JogadorIcon" type="AnimatedSprite2D" parent="Control" unique_id=181806856]
+material = SubResource("ShaderMaterial_apbm5")
+position = Vector2(-63, 5)
+sprite_frames = SubResource("SpriteFrames_3rpuc")
+animation = &"mario"
+
+[node name="Vida" type="Label" parent="Control" unique_id=149696183]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -2.0
+offset_right = -31.0
+offset_bottom = 10.0
+text = "4"
+label_settings = SubResource("LabelSettings_dnune")
