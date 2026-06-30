@@ -4,6 +4,7 @@ extends Node2D
 @onready var label_vida: Label = $Control/Vida
 @onready var label_pontos: Label = $Jogador/Pontos
 @onready var label_moedas: Label = $Jogador/MoedasIcon/Moedas
+@onready var label_tempo: Label = $Jogador/TempoIcon/Tempo
 @onready var jogador_icon: AnimatedSprite2D = $Control/JogadorIcon
 @onready var medidor_p: HBoxContainer = $Jogador/Medidor
 @onready var info_item: TileMapLayer = $Itens
@@ -12,6 +13,8 @@ extends Node2D
 func _process(_delta: float) -> void:
 	# Fica atualizando as informações a cada frame do jogo
 	atualizar_dados()
+	label_tempo.text = "%03d" % Global.tempo_restante
+	
 
 func atualizar_dados() -> void:
 	# 1. VERIFICA QUEM É O JOGADOR ATIVO E ATUALIZA OS TEXTOS
@@ -49,3 +52,7 @@ func atualizar_dados() -> void:
 func atualizar_velocidade(nivel_velocidade: int) -> void:
 	if medidor_p:
 		medidor_p.atualizar_medidor(nivel_velocidade)
+
+
+func _on_jogador_nivel_p_alterado(novo_nivel: int) -> void:
+	atualizar_velocidade(novo_nivel)

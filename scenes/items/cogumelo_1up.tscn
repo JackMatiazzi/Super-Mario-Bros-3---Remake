@@ -1,7 +1,18 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://c542oy4p4hc24"]
 
-[ext_resource type="Script" path="res://scripts/items/cogumelo_1up.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/items/mushroom_sprite.png" id="2_mushroom"]
+[ext_resource type="Script" uid="uid://bd6x3uiesao2s" path="res://scripts/items/cogumelo_1up.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bf7isrtv6w3yq" path="res://scenes/ui/score_popup.tscn" id="2_m6vlt"]
+[ext_resource type="Texture2D" uid="uid://c83awutsgq0is" path="res://assets/items/mushroom_sprite.png" id="2_mushroom"]
+[ext_resource type="Shader" uid="uid://dshj8mhd7n0pg" path="res://remover_fundo.gdshader" id="2_soyo4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmdik"]
+shader = ExtResource("2_soyo4")
+shader_parameter/cor_para_remover = Color(0, 1, 0, 1)
+shader_parameter/tolerancia_remover = 0.1
+shader_parameter/cor_para_alterar = Color(0.70980394, 0.19215687, 0.1254902, 1)
+shader_parameter/nova_cor = Color(0, 0.50980395, 0, 1)
+shader_parameter/tolerancia_alterar = 0.1
+shader_parameter/suavidade = 0.05
 
 [sub_resource type="AtlasTexture" id="AT_mushroom_1up"]
 atlas = ExtResource("2_mushroom")
@@ -10,14 +21,13 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="RectangleShape2D" id="RECT_body"]
 size = Vector2(14, 14)
 
-[node name="Cogumelo1UP" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 1
+[node name="Cogumelo1UP" type="CharacterBody2D" unique_id=1546176032]
 script = ExtResource("1_script")
+cena_pontuacao = ExtResource("2_m6vlt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.2, 0.9, 0.2, 1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=849342913]
+material = SubResource("ShaderMaterial_nmdik")
 texture = SubResource("AT_mushroom_1up")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1071469210]
 shape = SubResource("RECT_body")

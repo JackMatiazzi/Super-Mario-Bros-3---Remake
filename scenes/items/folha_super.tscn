@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://b44ktcnf0vx18"]
 
-[ext_resource type="Script" path="res://scripts/items/folha_super.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/items/super_leaf.png" id="2_leaf"]
-[ext_resource type="Texture2D" path="res://assets/items/super_leaf_flip.png" id="3_leaf_flip"]
+[ext_resource type="Script" uid="uid://d010ikyel4xk2" path="res://scripts/items/folha_super.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bf7isrtv6w3yq" path="res://scenes/ui/score_popup.tscn" id="2_23drg"]
+[ext_resource type="Texture2D" uid="uid://cvqdea546fnmr" path="res://assets/items/super_leaf.png" id="2_leaf"]
+[ext_resource type="Texture2D" uid="uid://blk261y4s7elr" path="res://assets/items/super_leaf_flip.png" id="3_leaf_flip"]
 
 [sub_resource type="SpriteFrames" id="SF_folha"]
 animations = [{
@@ -13,7 +14,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_leaf_flip")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 8.0
 }]
@@ -21,12 +22,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RECT_folha"]
 size = Vector2(13, 14)
 
-[node name="FolhaSuper" type="Area2D"]
+[node name="FolhaSuper" type="CharacterBody2D" unique_id=277248933]
+collision_mask = 0
 script = ExtResource("1_script")
+cena_pontuacao = ExtResource("2_23drg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2113614681]
 sprite_frames = SubResource("SF_folha")
-animation = &"default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=438257798]
 shape = SubResource("RECT_folha")

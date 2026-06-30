@@ -3,6 +3,7 @@ class_name MapPoint
 
 @export var level: bool = false
 @export var level_concluido: bool = false
+@export_file("*.tscn") var caminho_level: String = ""
 
 @export_group("Conexões (Caminhos)")
 @export_node_path("Marker2D") var acima

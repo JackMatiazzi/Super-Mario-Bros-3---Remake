@@ -1,10 +1,14 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dtytygmvgldks"]
 
-[ext_resource type="Script" path="res://scripts/items/moeda.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/items/coin_spritesheet.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://bm15rmruouigc" path="res://scripts/items/moeda.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bf7isrtv6w3yq" path="res://scenes/ui/score_popup.tscn" id="2_f644m"]
+[ext_resource type="Texture2D" uid="uid://b5e731pjc4gby" path="res://assets/items/coin_spritesheet.png" id="2_tex"]
+[ext_resource type="AudioStream" uid="uid://cnycn338ftxsm" path="res://assets/audio/Silencio.ogg" id="4_77je3"]
+[ext_resource type="AudioStream" uid="uid://csqnnkaynefj5" path="res://assets/audio/coin.mp3" id="4_rwh4u"]
 
 [sub_resource type="Shader" id="SH_chroma"]
-code = "shader_type canvas_item;\nvoid fragment(){ vec4 p=texture(TEXTURE,UV); vec3 bg=vec3(175.0,249.0,240.0)/255.0; vec3 light=vec3(252.0,252.0,252.0)/255.0; if(distance(p.rgb,bg)<0.02){p.a=0.0;} COLOR=p;}"
+code = "shader_type canvas_item;
+void fragment(){ vec4 p=texture(TEXTURE,UV); vec3 bg=vec3(175.0,249.0,240.0)/255.0; vec3 light=vec3(252.0,252.0,252.0)/255.0; if(distance(p.rgb,bg)<0.02){p.a=0.0;} COLOR=p;}"
 
 [sub_resource type="ShaderMaterial" id="MAT_chroma"]
 shader = SubResource("SH_chroma")
@@ -40,7 +44,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AT_coin_d")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
@@ -48,13 +52,26 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RECT_moeda"]
 size = Vector2(10, 14)
 
-[node name="Moeda" type="Area2D"]
-script = ExtResource("1_script")
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_rwh4u"]
+clip_count = 2
+clip_0/name = &"Silencio"
+clip_0/stream = ExtResource("4_77je3")
+clip_0/auto_advance = 0
+clip_1/name = &"Coin"
+clip_1/stream = ExtResource("4_rwh4u")
+clip_1/auto_advance = 0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Moeda" type="Area2D" unique_id=333817874]
+script = ExtResource("1_script")
+cena_pontuacao = ExtResource("2_f644m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=23028928]
 material = SubResource("MAT_chroma")
 sprite_frames = SubResource("SF_moeda")
-animation = &"default"
+autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=416420748]
 shape = SubResource("RECT_moeda")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1492380900]
+stream = SubResource("AudioStreamInteractive_rwh4u")

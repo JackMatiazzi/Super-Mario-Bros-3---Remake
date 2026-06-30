@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dxxe8dafn6xtn"]
+
+[ext_resource type="Script" uid="uid://0pk2yna1mdow" path="res://transicao.gd" id="1_y7psn"]
+[ext_resource type="Shader" uid="uid://c0ftamkmmcl0p" path="res://transicao.gdshader" id="2_yymif"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxqgl"]
+shader = ExtResource("2_yymif")
+shader_parameter/progresso = 0.0
+
+[node name="Transicao" type="CanvasLayer" unique_id=1036031882]
+script = ExtResource("1_y7psn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1925818294]
+material = SubResource("ShaderMaterial_pxqgl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

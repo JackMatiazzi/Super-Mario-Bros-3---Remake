@@ -1,31 +1,66 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://7wvc4wvn71wg"]
 
-[ext_resource type="Script" path="res://scripts/blocks/bloco_tijolo.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/tilesets/ground_tileset.png" id="2_ground"]
+[ext_resource type="Script" uid="uid://cibc5y18hc0n0" path="res://scripts/blocks/bloco_tijolo.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dq56lrcmacqs5" path="res://scenes/blocks/tijolo_fragmento.tscn" id="2_8id6w"]
+[ext_resource type="Texture2D" uid="uid://bsn1eh3cny71i" path="res://assets/tilesets/ground_tileset.png" id="2_ground"]
+[ext_resource type="PackedScene" uid="uid://bco5j7co2k78f" path="res://scenes/items/cogumelo.tscn" id="3_gema3"]
+[ext_resource type="PackedScene" uid="uid://bf7isrtv6w3yq" path="res://scenes/ui/score_popup.tscn" id="3_nkpfy"]
+[ext_resource type="PackedScene" uid="uid://c542oy4p4hc24" path="res://scenes/items/cogumelo_1up.tscn" id="4_gw2fq"]
+[ext_resource type="PackedScene" uid="uid://dtytygmvgldks" path="res://scenes/items/moeda.tscn" id="4_nkpfy"]
+[ext_resource type="PackedScene" uid="uid://b44ktcnf0vx18" path="res://scenes/items/folha_super.tscn" id="5_qmiu8"]
+[ext_resource type="Texture2D" uid="uid://lixgktyyrsa5" path="res://assets/blocks/question_block_spritesheet.png" id="6_1acsv"]
 
 [sub_resource type="RectangleShape2D" id="RECT_bloco"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RECT_golpe"]
-size = Vector2(14, 2)
-
-[sub_resource type="AtlasTexture" id="AT_tijolo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_61jir"]
 atlas = ExtResource("2_ground")
 region = Rect2(18, 23, 16, 16)
 
-[node name="BlocoTijolo" type="StaticBody2D"]
-script = ExtResource("1_script")
+[sub_resource type="AtlasTexture" id="AT_vazio"]
+atlas = ExtResource("6_1acsv")
+region = Rect2(72, 0, 16, 16)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[sub_resource type="SpriteFrames" id="SpriteFrames_pxqgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61jir")
+}],
+"loop": 1,
+"name": &"cheio",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_vazio")
+}],
+"loop": 1,
+"name": &"vazio",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RECT_golpe"]
+size = Vector2(16, 16)
+
+[node name="BlocoTijolo" type="StaticBody2D" unique_id=372490561]
+script = ExtResource("1_script")
+cena_moeda_pulo = ExtResource("4_nkpfy")
+cena_cogumelo = ExtResource("3_gema3")
+cena_cogumelo_vida = ExtResource("4_gw2fq")
+cena_folha = ExtResource("5_qmiu8")
+cena_pontuacao = ExtResource("3_nkpfy")
+cena_pedaco_bloco = ExtResource("2_8id6w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1821553984]
 shape = SubResource("RECT_bloco")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AT_tijolo")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1932714427]
+sprite_frames = SubResource("SpriteFrames_pxqgl")
+animation = &"cheio"
 
-[node name="AreaGolpe" type="Area2D" parent="."]
+[node name="AreaGolpe" type="Area2D" parent="." unique_id=73086214]
 collision_layer = 0
-collision_mask = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe"]
-position = Vector2(0, 9)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe" unique_id=488355842]
 shape = SubResource("RECT_golpe")

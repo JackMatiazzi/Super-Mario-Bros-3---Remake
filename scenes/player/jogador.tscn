@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://c2cc02fpefgoa"]
+
+[ext_resource type="Script" uid="uid://bhdh6sxoic1qx" path="res://scripts/player/jogador.gd" id="1_g3n0l"]
+[ext_resource type="SpriteFrames" uid="uid://d4glq8rsydays" path="res://scenes/player/animations/mario.tres" id="2_mlg5f"]
+[ext_resource type="SpriteFrames" uid="uid://cs5st2xlcf1us" path="res://scenes/player/animations/super_mario.tres" id="3_re18b"]
+[ext_resource type="SpriteFrames" uid="uid://bbc5lit1gg21f" path="res://scenes/player/animations/raccoon_mario.tres" id="4_mjr41"]
+[ext_resource type="SpriteFrames" uid="uid://cbx1x87n6sm4j" path="res://scenes/player/animations/luigi.tres" id="5_tb3h1"]
+[ext_resource type="SpriteFrames" uid="uid://dk4aklgusaw5w" path="res://scenes/player/animations/super_luigi.tres" id="6_snxud"]
+[ext_resource type="SpriteFrames" uid="uid://dxjflx6oc3or1" path="res://scenes/player/animations/raccoon_luigi.tres" id="7_jfspk"]
+[ext_resource type="Shader" uid="uid://dshj8mhd7n0pg" path="res://remover_fundo.gdshader" id="8_e25uu"]
+[ext_resource type="AudioStream" uid="uid://cnycn338ftxsm" path="res://assets/audio/Silencio.ogg" id="9_snxud"]
+[ext_resource type="AudioStream" uid="uid://csqnnkaynefj5" path="res://assets/audio/coin.mp3" id="10_jfspk"]
+[ext_resource type="AudioStream" uid="uid://c2x6ovhrr3u2p" path="res://assets/audio/powerup.mp3" id="11_e25uu"]
+[ext_resource type="AudioStream" uid="uid://etrl0iis3871" path="res://assets/audio/jump-small.mp3" id="12_mtx26"]
+[ext_resource type="AudioStream" uid="uid://b61itk023sham" path="res://assets/audio/life-lost.mp3" id="13_pm6xp"]
+[ext_resource type="AudioStream" uid="uid://d17bgj2gv8g5h" path="res://assets/audio/breakblock.mp3" id="14_jfspk"]
+[ext_resource type="AudioStream" uid="uid://c7pw2gl131gab" path="res://assets/audio/stomp.mp3" id="15_e25uu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxqgl"]
+shader = ExtResource("8_e25uu")
+shader_parameter/cor_para_remover = Color(0.26666668, 0.5686275, 0.74509805, 1)
+shader_parameter/tolerancia_remover = 0.1
+shader_parameter/cor_para_alterar = Color(0.16078432, 0.34509805, 0.4862745, 1)
+shader_parameter/nova_cor = Color(0.26666668, 0.5686275, 0.74509805, 1)
+shader_parameter/tolerancia_alterar = 0.1
+shader_parameter/suavidade = 0.05
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rojf5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxqgl"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh20u"]
+size = Vector2(8, 8)
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_pxqgl"]
+clip_count = 7
+clip_0/name = &"Silencio"
+clip_0/stream = ExtResource("9_snxud")
+clip_0/auto_advance = 0
+clip_1/name = &"Coin"
+clip_1/stream = ExtResource("10_jfspk")
+clip_1/auto_advance = 0
+clip_2/name = &"Powerup"
+clip_2/stream = ExtResource("11_e25uu")
+clip_2/auto_advance = 0
+clip_3/name = &"Jump"
+clip_3/stream = ExtResource("12_mtx26")
+clip_3/auto_advance = 0
+clip_4/name = &"Life Lost"
+clip_4/stream = ExtResource("13_pm6xp")
+clip_4/auto_advance = 0
+clip_5/name = &"Breakblock"
+clip_5/stream = ExtResource("14_jfspk")
+clip_5/auto_advance = 0
+clip_6/name = &"Stomp"
+clip_6/stream = ExtResource("15_e25uu")
+clip_6/auto_advance = 0
+
+[node name="Jogador" type="CharacterBody2D" unique_id=772798236 groups=["jogador"]]
+script = ExtResource("1_g3n0l")
+mario_pequeno = ExtResource("2_mlg5f")
+mario_super = ExtResource("3_re18b")
+mario_raccoon = ExtResource("4_mjr41")
+luigi_pequeno = ExtResource("5_tb3h1")
+luigi_super = ExtResource("6_snxud")
+luigi_raccoon = ExtResource("7_jfspk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1777153742]
+material = SubResource("ShaderMaterial_pxqgl")
+sprite_frames = ExtResource("2_mlg5f")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1897148172]
+shape = SubResource("RectangleShape2D_rojf5")
+
+[node name="DetectorItens" type="Area2D" parent="." unique_id=1654995459]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorItens" unique_id=756849883]
+shape = SubResource("RectangleShape2D_pxqgl")
+
+[node name="AreaCauda" type="Area2D" parent="." unique_id=835823373]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaCauda" unique_id=514248191]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_hh20u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=707079294]
+stream = SubResource("AudioStreamInteractive_pxqgl")

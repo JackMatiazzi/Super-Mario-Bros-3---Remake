@@ -2,13 +2,74 @@
 
 [ext_resource type="Script" uid="uid://dbkcesvm110yx" path="res://scripts/ui/title_menu.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://cay26wt6dv0up" path="res://assets/NES - Super Mario Bros. 3 - Other Backgrounds - Title Screen.png" id="2_title"]
+[ext_resource type="AudioStream" uid="uid://dml5f3l1jhh87" path="res://assets/audio/Map Move.ogg" id="3_2x6jx"]
+[ext_resource type="AudioStream" uid="uid://cnycn338ftxsm" path="res://assets/audio/Silencio.ogg" id="3_ebd6c"]
+[ext_resource type="AudioStream" uid="uid://csqnnkaynefj5" path="res://assets/audio/coin.mp3" id="3_o5ycs"]
+[ext_resource type="Shader" uid="uid://dshj8mhd7n0pg" path="res://remover_fundo.gdshader" id="5_2x6jx"]
 
 [sub_resource type="Theme" id="TH_title"]
 default_font_size = 28
 
 [sub_resource type="AtlasTexture" id="AT_title_combined"]
 atlas = ExtResource("2_title")
-region = Rect2(783, 241, 256, 224)
+region = Rect2(783, 244, 256, 224)
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_pxqgl"]
+clip_count = 3
+clip_0/name = &"Silencio"
+clip_0/stream = ExtResource("3_ebd6c")
+clip_0/auto_advance = 0
+clip_1/name = &"Move"
+clip_1/stream = ExtResource("3_2x6jx")
+clip_1/auto_advance = 0
+clip_2/name = &"Confirm"
+clip_2/stream = ExtResource("3_o5ycs")
+clip_2/auto_advance = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rojf5"]
+shader = ExtResource("5_2x6jx")
+shader_parameter/cor_para_remover = Color(0.8784314, 0.6392157, 0.84705883, 1)
+shader_parameter/tolerancia_remover = 0.1
+shader_parameter/cor_para_alterar = Color(0.6, 0.6, 0.6, 1)
+shader_parameter/nova_cor = Color(0.8784314, 0.6392157, 0.84705883, 1)
+shader_parameter/tolerancia_alterar = 0.1
+shader_parameter/suavidade = 0.05
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebd6c"]
+atlas = ExtResource("2_title")
+region = Rect2(115, 582, 56, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0431"]
+atlas = ExtResource("2_title")
+region = Rect2(375, 582, 56, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1mhc"]
+atlas = ExtResource("2_title")
+region = Rect2(635, 582, 56, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_434q6"]
+atlas = ExtResource("2_title")
+region = Rect2(895, 582, 56, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pxqgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebd6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0431")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1mhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_434q6")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="TitleMenu" type="Control" unique_id=1317213914]
 layout_mode = 3
@@ -30,37 +91,49 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Screen" type="Control" parent="." unique_id=1539479071]
-custom_minimum_size = Vector2(768, 672)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -384.0
-offset_top = -336.0
-offset_right = 384.0
-offset_bottom = 336.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TitleImage" type="TextureRect" parent="Screen" unique_id=1947639586]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -112.0
+offset_right = 128.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AT_title_combined")
 expand_mode = 1
 
 [node name="Selector" type="Node2D" parent="Screen" unique_id=1116910176]
-position = Vector2(215, 461)
+position = Vector2(-58, 40)
+scale = Vector2(0.3, 0.3)
 
 [node name="Outline" type="Polygon2D" parent="Screen/Selector" unique_id=1548757252]
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-3, -4, 29, 14, -3, 32)
 
 [node name="Fill" type="Polygon2D" parent="Screen/Selector" unique_id=1630812854]
-color = Color(0.933333, 0.521569, 0, 1)
+color = Color(0.9607843, 0.047058824, 0, 1)
 polygon = PackedVector2Array(0, 0, 22, 14, 0, 28)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=505546362]
+stream = SubResource("AudioStreamInteractive_pxqgl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1987589665]
+material = SubResource("ShaderMaterial_rojf5")
+position = Vector2(172, 132)
+sprite_frames = SubResource("SpriteFrames_pxqgl")
+autoplay = "default"
+frame_progress = 0.82959074

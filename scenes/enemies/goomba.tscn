@@ -1,16 +1,12 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dab3oh8gvc1tx"]
 
-[ext_resource type="Script" path="res://scripts/enemies/goomba.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/NES - Super Mario Bros. 3 - Enemies & Bosses - Enemies.png" id="2_enemies"]
-
-[sub_resource type="RectangleShape2D" id="RECT_body"]
-size = Vector2(14, 14)
-
-[sub_resource type="RectangleShape2D" id="RECT_interaction"]
-size = Vector2(18, 18)
+[ext_resource type="Script" uid="uid://b3dmdvxmkxawu" path="res://scripts/enemies/goomba.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://jw57h2y31jjd" path="res://assets/NES - Super Mario Bros. 3 - Enemies & Bosses - Enemies.png" id="2_enemies"]
+[ext_resource type="PackedScene" uid="uid://bf7isrtv6w3yq" path="res://scenes/ui/score_popup.tscn" id="2_ulfyc"]
 
 [sub_resource type="Shader" id="SH_chroma"]
-code = "shader_type canvas_item;\nvoid fragment(){ vec4 p=texture(TEXTURE,UV); vec3 a=vec3(41.0,88.0,124.0)/255.0; vec3 b=vec3(68.0,145.0,190.0)/255.0; vec3 c=vec3(253.0,114.0,203.0)/255.0; if(distance(p.rgb,a)<0.01||distance(p.rgb,b)<0.01||distance(p.rgb,c)<0.01){p.a=0.0;} COLOR=p;}"
+code = "shader_type canvas_item;
+void fragment(){ vec4 p=texture(TEXTURE,UV); vec3 a=vec3(41.0,88.0,124.0)/255.0; vec3 b=vec3(68.0,145.0,190.0)/255.0; vec3 c=vec3(253.0,114.0,203.0)/255.0; if(distance(p.rgb,a)<0.01||distance(p.rgb,b)<0.01||distance(p.rgb,c)<0.01){p.a=0.0;} COLOR=p;}"
 
 [sub_resource type="ShaderMaterial" id="MAT_chroma"]
 shader = SubResource("SH_chroma")
@@ -29,36 +25,50 @@ region = Rect2(35, 1, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SF_goomba"]
 animations = [{
-"frames": [{"duration": 1.0, "texture": SubResource("AT_squashed")}],
-"loop": false,
-"name": &"squashed",
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_walk_a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AT_walk_b")
+}],
+"loop": 1,
+"name": &"andando",
 "speed": 5.0
 }, {
-"frames": [{"duration": 1.0, "texture": SubResource("AT_walk_a")}, {"duration": 1.0, "texture": SubResource("AT_walk_b")}],
-"loop": true,
-"name": &"walk",
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AT_squashed")
+}],
+"loop": 0,
+"name": &"esmagado",
 "speed": 5.0
 }]
 
-[node name="Goomba" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RECT_body"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RECT_interaction"]
+size = Vector2(18, 18)
+
+[node name="Goomba" type="CharacterBody2D" unique_id=656692456]
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("1_script")
+cena_pontuacao = ExtResource("2_ulfyc")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("RECT_body")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=922253871]
 material = SubResource("MAT_chroma")
 sprite_frames = SubResource("SF_goomba")
-animation = &"walk"
+animation = &"andando"
 
-[node name="Wings" type="Node2D" parent="."]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1133995060]
+shape = SubResource("RECT_body")
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=38224406]
 collision_layer = 0
-collision_mask = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1991231531]
 shape = SubResource("RECT_interaction")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=358354477]
+rect = Rect2(-8, -8, 16, 16)

@@ -8,11 +8,6 @@ class_name ScorePopup extends Node2D
 
 var _time := 0.0
 
-
-func _ready() -> void:
-	label.text = "+%d" % value
-
-
 func _process(delta: float) -> void:
 	_time += delta
 	position.y -= rise_speed * delta

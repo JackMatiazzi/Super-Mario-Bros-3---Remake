@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") or event.is_action_pressed("jump") or event is InputEventMouseButton and event.pressed:
+	if event.is_action_pressed("space") or event is InputEventMouseButton and event.pressed:
 		_go_to_title_menu()
 		accept_event()
 
