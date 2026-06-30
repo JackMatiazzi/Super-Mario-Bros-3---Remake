@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://t5a512dn3aao"]
 
-[ext_resource type="Script" path="res://scripts/ui/intro_video.gd" id="1_script"]
-[ext_resource type="VideoStream" path="res://assets/video/output.ogv" id="2_video"]
+[ext_resource type="Script" uid="uid://cq8bcigqxmtiw" path="res://scripts/ui/intro_video.gd" id="1_script"]
+[ext_resource type="VideoStream" uid="uid://d2grttkmse2hn" path="res://assets/video/output.ogv" id="2_video"]
 
-[node name="IntroVideo" type="Control"]
+[node name="IntroVideo" type="Control" unique_id=1762701016]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1695432763]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=754834635]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

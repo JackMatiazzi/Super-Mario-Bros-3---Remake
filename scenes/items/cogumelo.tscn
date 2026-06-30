@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://bco5j7co2k78f"]
 
-[ext_resource type="Script" path="res://scripts/items/cogumelo.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/items/mushroom_sprite.png" id="2_mushroom"]
+[ext_resource type="Script" uid="uid://b0w64xsy37762" path="res://scripts/items/cogumelo.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c83awutsgq0is" path="res://assets/items/mushroom_sprite.png" id="2_mushroom"]
+[ext_resource type="PackedScene" uid="uid://bf7isrtv6w3yq" path="res://scenes/ui/score_popup.tscn" id="2_nsjfh"]
 
 [sub_resource type="AtlasTexture" id="AT_mushroom"]
 atlas = ExtResource("2_mushroom")
@@ -10,13 +11,12 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="RectangleShape2D" id="RECT_body"]
 size = Vector2(14, 14)
 
-[node name="Cogumelo" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 1
+[node name="Cogumelo" type="CharacterBody2D" unique_id=1183523037]
 script = ExtResource("1_script")
+cena_pontuacao = ExtResource("2_nsjfh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1112866741]
 texture = SubResource("AT_mushroom")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1988620777]
 shape = SubResource("RECT_body")

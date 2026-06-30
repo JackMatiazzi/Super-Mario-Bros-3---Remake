@@ -1,0 +1,171 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cbx1x87n6sm4j"]
+
+[ext_resource type="Texture2D" uid="uid://bi8iqgmjxoesw" path="res://assets/NES - Super Mario Bros. 3 - Playable Characters - Mario & Luigi.png" id="1_iyqf5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdl17"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(307, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bynk"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(181, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd5sy"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(145, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw50j"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(145, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug6ee"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(163, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyqf5"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(1, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3jkr"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(37, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80rt3"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(127, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0jky"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(55, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjk7b"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(73, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hirf5"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(91, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q38ms"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(199, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se1p3"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(1, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fudqf"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(19, 52, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouj5j"]
+atlas = ExtResource("1_iyqf5")
+region = Rect2(109, 52, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdl17")
+}],
+"loop": 1,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bynk")
+}],
+"loop": 1,
+"name": &"foot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd5sy")
+}],
+"loop": 1,
+"name": &"grab",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw50j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug6ee")
+}],
+"loop": 1,
+"name": &"grab_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyqf5")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3jkr")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80rt3")
+}],
+"loop": 1,
+"name": &"pipe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0jky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjk7b")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hirf5")
+}],
+"loop": 1,
+"name": &"run_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q38ms")
+}],
+"loop": 1,
+"name": &"slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se1p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fudqf")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouj5j")
+}],
+"loop": 1,
+"name": &"wall",
+"speed": 5.0
+}]

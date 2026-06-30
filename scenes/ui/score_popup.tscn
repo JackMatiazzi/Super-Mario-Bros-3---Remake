@@ -1,19 +1,25 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://bf7isrtv6w3yq"]
 
-[ext_resource type="Script" path="res://scripts/ui/score_popup.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://c66kbx5jlsxci" path="res://scripts/ui/score_popup.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://djmw4vu0thvth" path="res://assets/Super-Mario-Bros--3.ttf" id="2_8ixi6"]
 
-[node name="ScorePopup" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_6bw1o"]
+font = ExtResource("2_8ixi6")
+font_size = 8
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ScorePopup" type="Node2D" unique_id=1682115201]
 script = ExtResource("1_script")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -28.0
-offset_top = -10.0
-offset_right = 28.0
+[node name="Label" type="Label" parent="." unique_id=300976044]
+offset_right = 33.0
 offset_bottom = 12.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 18
 text = "+1000"
+label_settings = SubResource("LabelSettings_6bw1o")
 horizontal_alignment = 1
 vertical_alignment = 1

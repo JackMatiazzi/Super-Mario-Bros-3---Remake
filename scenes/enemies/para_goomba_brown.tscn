@@ -1,9 +1,16 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://hmrru2vkxk3f"]
 
-[ext_resource type="PackedScene" path="res://scenes/enemies/goomba.tscn" id="1_goomba"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/micro_goomba.tscn" id="2_micro"]
+[ext_resource type="PackedScene" uid="uid://dab3oh8gvc1tx" path="res://scenes/enemies/goomba.tscn" id="1_goomba"]
 
-[node name="ParaGoombaBrown" instance=ExtResource("1_goomba")]
-winged = true
-spawns_micro = true
-micro_scene = ExtResource("2_micro")
+[sub_resource type="SpriteFrames" id="SpriteFrames_cslo6"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"andando",
+"speed": 5.0
+}]
+
+[node name="ParaGoombaBrown" unique_id=1537891698 instance=ExtResource("1_goomba")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=922253871]
+sprite_frames = SubResource("SpriteFrames_cslo6")

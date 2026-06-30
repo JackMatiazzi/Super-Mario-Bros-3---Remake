@@ -1,15 +1,19 @@
 [gd_scene format=4 uid="uid://qad3gm7iqckj"]
 
 [ext_resource type="Texture2D" uid="uid://cf0jlb14d4nkg" path="res://assets/NES - Super Mario Bros. 3 - World Maps - World 1_ Grass Land.png" id="1_5t1r2"]
-[ext_resource type="Script" uid="uid://bri8qa5pej44t" path="res://mundo_1.gd" id="1_sq2yq"]
+[ext_resource type="Script" uid="uid://bri8qa5pej44t" path="res://scripts/game/mundo_1.gd" id="1_sq2yq"]
 [ext_resource type="Shader" uid="uid://dshj8mhd7n0pg" path="res://remover_fundo.gdshader" id="2_sq2yq"]
 [ext_resource type="Texture2D" uid="uid://bi8iqgmjxoesw" path="res://assets/NES - Super Mario Bros. 3 - Playable Characters - Mario & Luigi.png" id="3_6m2xb"]
-[ext_resource type="PackedScene" uid="uid://bv4b1nr6c051h" path="res://info.tscn" id="4_6m2xb"]
-[ext_resource type="Script" uid="uid://dr4rcl6qojiau" path="res://map_point.gd" id="4_nvxna"]
-[ext_resource type="PackedScene" uid="uid://dqk36o0x5pr7v" path="res://carta.tscn" id="5_nvxna"]
+[ext_resource type="PackedScene" uid="uid://bv4b1nr6c051h" path="res://scenes/ui/info.tscn" id="4_6m2xb"]
+[ext_resource type="Script" uid="uid://dr4rcl6qojiau" path="res://scripts/ui/map_point.gd" id="4_nvxna"]
+[ext_resource type="PackedScene" uid="uid://dqk36o0x5pr7v" path="res://scenes/items/carta.tscn" id="5_nvxna"]
 [ext_resource type="Texture2D" uid="uid://dxxqvmkp4us5n" path="res://assets/NES - Super Mario Bros. 3 - Tilesets - Map Tileset.png" id="8_d6q6x"]
-[ext_resource type="Script" uid="uid://dkxt0lt4wu47g" path="res://mensagens.gd" id="8_nleli"]
+[ext_resource type="Script" uid="uid://dkxt0lt4wu47g" path="res://scripts/ui/mensagens.gd" id="8_nleli"]
 [ext_resource type="FontFile" uid="uid://djmw4vu0thvth" path="res://assets/Super-Mario-Bros--3.ttf" id="9_2njp6"]
+[ext_resource type="AudioStream" uid="uid://c587gja5rdoa" path="res://assets/audio/01 - Musica mapa.ogg" id="11_cslo6"]
+[ext_resource type="AudioStream" uid="uid://dirdg3n8dfww0" path="res://assets/audio/Map Start.ogg" id="12_cslo6"]
+[ext_resource type="AudioStream" uid="uid://dml5f3l1jhh87" path="res://assets/audio/Map Move.ogg" id="13_plc88"]
+[ext_resource type="AudioStream" uid="uid://dgcx4mjxrwmek" path="res://assets/audio/Level Start.wav" id="14_xhvvd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6q6x"]
 texture = ExtResource("1_5t1r2")
@@ -155,7 +159,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6m2xb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fire",
 "speed": 5.0
 }, {
@@ -163,7 +167,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u620f")
 }],
-"loop": true,
+"loop": 1,
 "name": &"icon",
 "speed": 5.0
 }, {
@@ -171,7 +175,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nleli")
 }],
-"loop": true,
+"loop": 1,
 "name": &"luigi",
 "speed": 5.0
 }, {
@@ -179,7 +183,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8pdju")
 }],
-"loop": true,
+"loop": 1,
 "name": &"raccoon",
 "speed": 5.0
 }, {
@@ -187,7 +191,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ioa2f")
 }],
-"loop": true,
+"loop": 1,
 "name": &"super",
 "speed": 5.0
 }]
@@ -223,7 +227,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6m2xb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fire",
 "speed": 5.0
 }, {
@@ -231,7 +235,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d6q6x")
 }],
-"loop": true,
+"loop": 1,
 "name": &"icon",
 "speed": 5.0
 }, {
@@ -239,7 +243,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2njp6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"mario",
 "speed": 5.0
 }, {
@@ -247,7 +251,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nvxna")
 }],
-"loop": true,
+"loop": 1,
 "name": &"raccoon",
 "speed": 5.0
 }, {
@@ -255,7 +259,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sq2yq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"super",
 "speed": 5.0
 }]
@@ -363,7 +367,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nleli")
 }],
-"loop": true,
+"loop": 1,
 "name": &"luigi",
 "speed": 5.0
 }, {
@@ -371,16 +375,48 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2njp6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"mario",
 "speed": 5.0
 }]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_pxqgl"]
+clip_count = 4
+clip_0/name = &"Musica Mapa"
+clip_0/stream = ExtResource("11_cslo6")
+clip_0/auto_advance = 0
+clip_1/name = &"Map Start"
+clip_1/stream = ExtResource("12_cslo6")
+clip_1/auto_advance = 1
+clip_1/next_clip = 0
+clip_2/name = &"Map Move"
+clip_2/stream = ExtResource("13_plc88")
+clip_2/auto_advance = 1
+clip_2/next_clip = 0
+clip_3/name = &"Level Start"
+clip_3/stream = ExtResource("14_xhvvd")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(1, 0): {
+"fade_beats": 0.1,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 2
+},
+Vector2i(2, 0): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 2
+}
+}
 
 [node name="Mundo 1" type="Node2D" unique_id=1076011540 node_paths=PackedStringArray("ponto_inicial")]
 script = ExtResource("1_sq2yq")
 ponto_inicial = NodePath("Levels/Caminhos/Inicio")
 
 [node name="Fundo" type="ColorRect" parent="." unique_id=1730680669]
+z_index = -10
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -552,6 +588,7 @@ position = Vector2(-56, -72)
 gizmo_extents = 8.0
 script = ExtResource("4_nvxna")
 level = true
+caminho_level = "uid://csm3qdyn0gvjq"
 abaixo = NodePath("../Ponto")
 direita = NodePath("../Ponto2")
 acima_liberado = false
@@ -563,6 +600,7 @@ position = Vector2(8, -72)
 gizmo_extents = 8.0
 script = ExtResource("4_nvxna")
 level = true
+caminho_level = "uid://djijfnscj5llg"
 abaixo = NodePath("../Ponto4")
 esquerda = NodePath("../Ponto2")
 direita = NodePath("../Level3")
@@ -622,9 +660,11 @@ position = Vector2(51, 80)
 
 [node name="Carta2" parent="Levels/Informaçoes/Control" unique_id=1911444761 instance=ExtResource("5_nvxna")]
 position = Vector2(78, 80)
+id_carta = 1
 
 [node name="Carta3" parent="Levels/Informaçoes/Control" unique_id=1032124550 instance=ExtResource("5_nvxna")]
 position = Vector2(105, 80)
+id_carta = 2
 
 [node name="Info" parent="Levels/Informaçoes/Control" unique_id=2036991684 instance=ExtResource("4_6m2xb")]
 position = Vector2(-40, 80)
@@ -640,7 +680,7 @@ autoplay = &"luigi"
 [node name="Luigi" type="AnimatedSprite2D" parent="." unique_id=564859948]
 material = SubResource("ShaderMaterial_2njp6")
 sprite_frames = SubResource("SpriteFrames_u620f")
-animation = &"luigi"
+animation = &"super"
 
 [node name="Mario" type="AnimatedSprite2D" parent="." unique_id=1961091103]
 material = SubResource("ShaderMaterial_d6q6x")
@@ -716,3 +756,6 @@ material = SubResource("ShaderMaterial_u620f")
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_8pdju")
 animation = &"mario"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1488450481]
+stream = SubResource("AudioStreamInteractive_pxqgl")

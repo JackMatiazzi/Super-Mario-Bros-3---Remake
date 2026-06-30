@@ -1,7 +1,17 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://fuci708640tm"]
 
-[ext_resource type="Script" path="res://scripts/blocks/bloco_item.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/blocks/question_block_spritesheet.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://djqelbdd8meuo" path="res://scripts/blocks/bloco_item.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dtytygmvgldks" path="res://scenes/items/moeda.tscn" id="2_qjep7"]
+[ext_resource type="Texture2D" uid="uid://lixgktyyrsa5" path="res://assets/blocks/question_block_spritesheet.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://bco5j7co2k78f" path="res://scenes/items/cogumelo.tscn" id="3_jvjvi"]
+[ext_resource type="PackedScene" uid="uid://b44ktcnf0vx18" path="res://scenes/items/folha_super.tscn" id="4_6vixy"]
+[ext_resource type="PackedScene" uid="uid://bf7isrtv6w3yq" path="res://scenes/ui/score_popup.tscn" id="5_5rysi"]
+[ext_resource type="AudioStream" uid="uid://cnycn338ftxsm" path="res://assets/audio/Silencio.ogg" id="7_5rysi"]
+[ext_resource type="AudioStream" uid="uid://rlyqhdt57rqk" path="res://assets/audio/powerup-appears.mp3" id="7_jvjvi"]
+[ext_resource type="AudioStream" uid="uid://csqnnkaynefj5" path="res://assets/audio/coin.mp3" id="8_6vixy"]
+
+[sub_resource type="RectangleShape2D" id="RECT_bloco"]
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AT_cheio_a"]
 atlas = ExtResource("2_tex")
@@ -38,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AT_cheio_d")
 }],
-"loop": true,
+"loop": 1,
 "name": &"cheio",
 "speed": 5.0
 }, {
@@ -46,31 +56,45 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AT_vazio")
 }],
-"loop": false,
+"loop": 0,
 "name": &"vazio",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RECT_bloco"]
+[sub_resource type="RectangleShape2D" id="RECT_golpe"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RECT_golpe"]
-size = Vector2(14, 2)
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_qjep7"]
+clip_count = 3
+clip_0/name = &"Silencio"
+clip_0/stream = ExtResource("7_5rysi")
+clip_0/auto_advance = 0
+clip_1/name = &"Powerup Appears"
+clip_1/stream = ExtResource("7_jvjvi")
+clip_1/auto_advance = 0
+clip_2/name = &"Coin"
+clip_2/stream = ExtResource("8_6vixy")
+clip_2/auto_advance = 0
 
-[node name="BlocoItem" type="StaticBody2D"]
+[node name="BlocoItem" type="StaticBody2D" unique_id=1736005000]
 script = ExtResource("1_script")
+cena_moeda_pulo = ExtResource("2_qjep7")
+cena_cogumelo = ExtResource("3_jvjvi")
+cena_folha = ExtResource("4_6vixy")
+cena_pontuacao = ExtResource("5_5rysi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1651060542]
 shape = SubResource("RECT_bloco")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2049741812]
 sprite_frames = SubResource("SF_bloco")
 animation = &"cheio"
 
-[node name="AreaGolpe" type="Area2D" parent="."]
+[node name="AreaGolpe" type="Area2D" parent="." unique_id=1305122768]
 collision_layer = 0
-collision_mask = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe"]
-position = Vector2(0, 9)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGolpe" unique_id=1662039506]
 shape = SubResource("RECT_golpe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=705407759]
+stream = SubResource("AudioStreamInteractive_qjep7")

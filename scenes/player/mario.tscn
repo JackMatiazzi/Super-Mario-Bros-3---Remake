@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgdoljky1vvn5" path="res://scripts/player/mario.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://d4lo3dp2n5chg" path="res://assets/mario/small_mario_spritesheet.png" id="2_small"]
+[ext_resource type="Texture2D" uid="uid://bi8iqgmjxoesw" path="res://assets/NES - Super Mario Bros. 3 - Playable Characters - Mario & Luigi.png" id="2_ymw4l"]
 [ext_resource type="Texture2D" uid="uid://d1iaxocxk8wao" path="res://assets/mario/super_mario_spritesheet.png" id="3_super"]
 [ext_resource type="Texture2D" uid="uid://baxunej3arujx" path="res://assets/mario/3.png" id="4_raccoon"]
 
@@ -28,6 +29,10 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="MAT_raccoon_chroma"]
 shader = SubResource("SH_raccoon_chroma")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfcli"]
+atlas = ExtResource("2_ymw4l")
+region = Rect2(303, 88, 24, 32)
+
 [sub_resource type="AtlasTexture" id="AT_ad_idle"]
 atlas = ExtResource("3_super")
 region = Rect2(0, 14, 16, 32)
@@ -48,9 +53,9 @@ region = Rect2(18, 14, 16, 32)
 atlas = ExtResource("3_super")
 region = Rect2(0, 14, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AT_ad_crouch"]
-atlas = ExtResource("3_super")
-region = Rect2(144, 80, 16, 32)
+[sub_resource type="AtlasTexture" id="AT_pq_die"]
+atlas = ExtResource("2_small")
+region = Rect2(306, 15, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AT_pq_idle"]
 atlas = ExtResource("2_small")
@@ -68,9 +73,9 @@ region = Rect2(18, 15, 16, 16)
 atlas = ExtResource("2_small")
 region = Rect2(0, 15, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AT_pq_die"]
-atlas = ExtResource("2_small")
-region = Rect2(306, 15, 16, 16)
+[sub_resource type="AtlasTexture" id="AT_rc_crouch"]
+atlas = ExtResource("4_raccoon")
+region = Rect2(54, 347, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AT_rc_fly_a"]
 atlas = ExtResource("4_raccoon")
@@ -87,10 +92,6 @@ region = Rect2(1, 347, 16, 32)
 [sub_resource type="AtlasTexture" id="AT_rc_jump"]
 atlas = ExtResource("4_raccoon")
 region = Rect2(105, 347, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AT_rc_crouch"]
-atlas = ExtResource("4_raccoon")
-region = Rect2(54, 347, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AT_rc_tail_a"]
 atlas = ExtResource("4_raccoon")
@@ -112,7 +113,7 @@ region = Rect2(53, 347, 16, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AT_ad_crouch")
+"texture": SubResource("AtlasTexture_yfcli")
 }],
 "loop": 1,
 "name": &"adulto_crouch",
@@ -150,18 +151,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AT_pq_idle")
+"texture": SubResource("AT_pq_die")
 }],
-"loop": 1,
-"name": &"pequeno_idle",
+"loop": 0,
+"name": &"pequeno_die",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AT_pq_die")
+"texture": SubResource("AT_pq_idle")
 }],
-"loop": false,
-"name": &"pequeno_die",
+"loop": 1,
+"name": &"pequeno_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -251,14 +252,14 @@ size = Vector2(12, 20)
 size = Vector2(22, 40)
 
 [node name="Mario" type="CharacterBody2D" unique_id=194847805]
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("1_script")
 
 [node name="CollisionShapePequeno" type="CollisionShape2D" parent="." unique_id=571254352]
+visible = false
 shape = SubResource("RECT_pequeno")
 
 [node name="CollisionShapeAdulto" type="CollisionShape2D" parent="." unique_id=1607746685]
+visible = false
 position = Vector2(0, 2.5)
 shape = SubResource("RECT_adulto")
 disabled = true
@@ -266,9 +267,10 @@ disabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=638154647]
 material = SubResource("MAT_raccoon_chroma")
 sprite_frames = SubResource("SF_mario")
-animation = &"raccoon_idle"
+animation = &"adulto_crouch"
 
 [node name="TailHitbox" type="Area2D" parent="." unique_id=1996613491]
+visible = false
 collision_layer = 0
 collision_mask = 3
 monitoring = false
@@ -277,14 +279,16 @@ monitoring = false
 shape = SubResource("RECT_tail")
 
 [node name="AreaPickup" type="Area2D" parent="." unique_id=1111111111]
+visible = false
 collision_layer = 0
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPickup" unique_id=2222222222]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaPickup" unique_id=-2072745074]
 position = Vector2(0, -10)
 shape = SubResource("RECT_pickup")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1975489485]
+visible = false
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqk36o0x5pr7v"]
 
 [ext_resource type="Shader" uid="uid://dshj8mhd7n0pg" path="res://remover_fundo.gdshader" id="1_ljfyx"]
-[ext_resource type="Script" uid="uid://d4c885nr03q67" path="res://carta.gd" id="1_xu3ok"]
+[ext_resource type="Script" uid="uid://d4c885nr03q67" path="res://scripts/items/carta.gd" id="1_xu3ok"]
 [ext_resource type="Texture2D" uid="uid://dxxqvmkp4us5n" path="res://assets/NES - Super Mario Bros. 3 - Tilesets - Map Tileset.png" id="2_uly2h"]
 [ext_resource type="Texture2D" uid="uid://bf88r7hdr7vld" path="res://assets/NES - Super Mario Bros. 3 - Tilesets - Miscellaneous Screen Tiles.png" id="3_cl16x"]
 

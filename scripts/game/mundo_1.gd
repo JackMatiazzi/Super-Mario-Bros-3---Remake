@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var itens: Node2D = $"Levels/Informaçoes/Control/Info/Itens"
 @onready var mensagem: CanvasLayer = $Mensagens
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # Referências para os dois personagens
 @onready var mario: AnimatedSprite2D = $Mario
@@ -21,38 +22,35 @@ var esta_se_movendo: bool = false
 var exibindo_mensagem: bool = false # O NOSSO CADEADO DE INPUT
 var velocidad_tween: float = 0.3
 
-func _ready() -> void:
+func _ready() -> void:	
+	if not audio_player.playing:
+		audio_player.play()
+	
 	if ponto_inicial:
 		# Ambos começam no mesmo ponto físico
 		mario_ponto_atual = ponto_inicial
 		mario.global_position = mario_ponto_atual.global_position
 		
-		# Configuração inicial do Mario
-		mario.play("mario") 
-		mario.z_index = 1
+		# Configuração inicial
+		alternar_jogador()
 		
 		# COMPORTAMENTO COM 1 OU 2 JOGADORES
 		if Global.quantidade_jogadores == 2:
 			luigi_ponto_atual = ponto_inicial
 			luigi.global_position = luigi_ponto_atual.global_position
-			luigi.play("icon")
-			anim_luigi.stop()
-			luigi.z_index = 0
 			luigi.show() # Garante que ele aparece se for 2P
 		else:
 			luigi.hide() # Esconde o Luigi se for jogo de 1 jogador
-		
-		# DISPARA A MENSAGEM INICIAL DO MARIO BUSCANDO AS VIDAS DO GLOBAL
-		executar_mensagem("mario", Global.vidas_mario)
 		
 	else:
 		push_error("Por favor, atribua o Ponto Inicial no Inspetor do mapa!")
 
 func _process(_delta: float) -> void:
+	Global.verificar_fim_de_jogo()
 	# Ignora TOTALMENTE os comandos se estiver se movendo OU se a mensagem estiver na tela
 	if esta_se_movendo or exibindo_mensagem:
 		return
-		
+	
 	# ==========================================
 	# CONTROLES DE AÇÃO
 	# ==========================================
@@ -96,12 +94,25 @@ func executar_mensagem(nome_jogador: String, vidas: int) -> void:
 	mensagem.ocultar_mensagem() # Esconde o painel
 	
 	exibindo_mensagem = false # Destranca os controles do mapa
+	_tocar_audio("Map Start")
 
 func alternar_jogador() -> void:
-	# Dupla segurança: se por acaso tentar alternar em 1 jogador, bloqueia
+	# Se for modo de 1 jogador, não precisa fazer nada além de garantir que joga com o ativo
 	if Global.quantidade_jogadores == 1:
+		# Se o Mario morreu e sobrou o Luigi (ou vice-versa), define o sobrevivente
+		if Global.mario_eliminado:
+			Global.jogador_ativo = Global.Jogador.LUIGI
+			luigi.show()
+			mario.hide()
+			executar_mensagem("luigi", Global.vidas_luigi)
+		else:
+			Global.jogador_ativo = Global.Jogador.MARIO
+			mario.show()
+			luigi.hide()
+			executar_mensagem("mario", Global.vidas_mario)
 		return
-		
+
+	# LÓGICA DE ALTERNÂNCIA SE OS DOIS ESTIVEREM VIVOS (2 JOGADORES)
 	if Global.jogador_ativo == Global.Jogador.MARIO:
 		Global.jogador_ativo = Global.Jogador.LUIGI
 		
@@ -113,7 +124,6 @@ func alternar_jogador() -> void:
 		mario.z_index = 0
 		
 		print("Agora jogando com: LUIGI")
-		# Lendo as vidas do Luigi direto do Global
 		executar_mensagem("luigi", Global.vidas_luigi)
 	else:
 		Global.jogador_ativo = Global.Jogador.MARIO
@@ -126,14 +136,14 @@ func alternar_jogador() -> void:
 		luigi.z_index = 0
 		
 		print("Agora jogando com: MARIO")
-		# Lendo as vidas do Mario direto do Global
 		executar_mensagem("mario", Global.vidas_mario)
 
 func entrar_no_level() -> void:
 	var ponto_atual_do_ativo: MapPoint = mario_ponto_atual if Global.jogador_ativo == Global.Jogador.MARIO else luigi_ponto_atual
-	if ponto_atual_do_ativo.level:
+	if ponto_atual_do_ativo.level and ponto_atual_do_ativo.caminho_level != "":
 		print("ENTER pressionado: Iniciando transição para a fase!")
-		get_tree().change_scene_to_file("res://level_1.tscn")
+		_tocar_audio("Level Start")
+		Transicao.fechar_tela_retangulo(ponto_atual_do_ativo.caminho_level)
 	else:
 		print("ENTER pressionado: Não tem nenhuma fase neste ponto.")
 
@@ -161,6 +171,7 @@ func tentar_mover(direcao: String) -> void:
 
 func mover_jogador_ativo(novo_ponto: MapPoint) -> void:
 	esta_se_movendo = true
+	_tocar_audio("Map Move")
 	var node_para_mover: AnimatedSprite2D = mario if Global.jogador_ativo == Global.Jogador.MARIO else luigi
 	
 	var tween = create_tween()
@@ -177,3 +188,14 @@ func _ao_chegar_no_ponto(novo_ponto: MapPoint) -> void:
 		luigi_ponto_atual = novo_ponto
 		
 	esta_se_movendo = false
+
+# ==========================================
+# FUNÇÃO AUXILIAR PARA O ÁUDIO INTERATIVO
+# ==========================================
+func _tocar_audio(nome_clip: String) -> void:
+	# Captura o controlador de reprodução interno (Playback)
+	var playback = audio_player.get_stream_playback()
+	
+	# Troca para o clipe desejado pelo nome (certifique-se de que os nomes batem com os do editor)
+	if playback:
+		playback.switch_to_clip_by_name(nome_clip)

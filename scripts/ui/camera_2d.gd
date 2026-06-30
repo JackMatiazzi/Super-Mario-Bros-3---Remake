@@ -5,8 +5,6 @@ extends Camera2D
 # A altura onde a câmera fica travada no chão
 var altura_fixa_y: float = 0.0
 
-# O PONTO DE DESTRAVE: Você pode ajustar isso no Inspetor.
-# Quando o Y do jogador for MENOR que esse valor (subir muito), a câmera destrava.
 @export var limite_para_subir: float = 0.0 
 
 @export var velocidade_retorno_chao: float = 250.0

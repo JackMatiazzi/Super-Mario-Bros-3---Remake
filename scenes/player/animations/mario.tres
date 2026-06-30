@@ -1,0 +1,167 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://d4glq8rsydays"]
+
+[ext_resource type="Texture2D" uid="uid://bi8iqgmjxoesw" path="res://assets/NES - Super Mario Bros. 3 - Playable Characters - Mario & Luigi.png" id="1_mv0ac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piskp"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(307, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up3yx"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(181, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d2dh"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(145, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bojp"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(163, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xtdk"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(1, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl7p1"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(37, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myvlb"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(127, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxx6g"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(55, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ilf8"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(73, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0fj0"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(91, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4htl4"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(199, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8w1l"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(1, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82un1"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(19, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frr3b"]
+atlas = ExtResource("1_mv0ac")
+region = Rect2(109, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piskp")
+}],
+"loop": 1,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up3yx")
+}],
+"loop": 1,
+"name": &"foot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d2dh")
+}],
+"loop": 1,
+"name": &"grab",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d2dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bojp")
+}],
+"loop": 1,
+"name": &"grab_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xtdk")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl7p1")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myvlb")
+}],
+"loop": 1,
+"name": &"pipe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxx6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ilf8")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0fj0")
+}],
+"loop": 1,
+"name": &"run_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4htl4")
+}],
+"loop": 1,
+"name": &"slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8w1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82un1")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frr3b")
+}],
+"loop": 1,
+"name": &"wall",
+"speed": 5.0
+}]

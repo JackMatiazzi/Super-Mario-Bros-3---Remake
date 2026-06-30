@@ -1,14 +1,14 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dq56lrcmacqs5"]
 
-[ext_resource type="Script" path="res://scripts/blocks/tijolo_fragmento.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/tilesets/ground_tileset.png" id="2_ground"]
+[ext_resource type="Script" uid="uid://dblf313i771kl" path="res://scripts/blocks/tijolo_fragmento.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bsn1eh3cny71i" path="res://assets/tilesets/ground_tileset.png" id="2_ground"]
 
 [sub_resource type="AtlasTexture" id="AT_fragmento"]
 atlas = ExtResource("2_ground")
 region = Rect2(18, 23, 8, 8)
 
-[node name="TijoloFragmento" type="Node2D"]
+[node name="TijoloFragmento" type="Node2D" unique_id=990648226]
 script = ExtResource("1_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=756247771]
 texture = SubResource("AT_fragmento")
